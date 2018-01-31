@@ -11,19 +11,11 @@ The Resistome Search Tool
 <img src = "/static/resistome_logo.png" alt = "The Resistome Database" style="position: absolute; left: 33%">
 
 <div style="position: absolute; left: 30%; top: 68%; width: 600px; text-align:justify">
-<p></p>
-<p><b>Search for a gene:</b><br>
-
-<form action="/query/" method="post" style="text-align:center">
-  <b><i>E. coli</i> gene name (b0001, thrL):</b> <input type="text" name="single_gene" required> <input type="submit" value="Search">
-</form>
-
-</p>
-<p><b>Search for a set of genes (one gene per line):</b><br>
-
-<form action="/query/" method="post" style="text-align:center">
-  <textarea name="gene_list" rows="30" cols="50" required></textarea> <br>
-  <input type="submit" value="Search">
+<br>
+<p>Query the Resistome</p>
+<form action="/" method="post" style="text-align:center">
+  <input type="submit" value="Gene Search" name="search">    
+  <input type="submit" value="Phenotype Search" name="search">
 </form>
 
 </p>

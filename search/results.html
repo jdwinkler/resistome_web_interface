@@ -10,8 +10,50 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 
 <img src = "/static/resistome_logo.png" alt = "The Resistome Database" style="position: absolute; left: 33%">
 
-<div style="position: absolute; left: 30%; top: 68%; width: 600px; text-align:justify">
-<p>Queried Gene(s): {{', '.join(gene_query)}}</p>
+<div style="position: absolute; left: 12.5%; top: 68%; width: 1200px; text-align:justify">
+<p>Your query examined the following genes: {{ ', '.join(converted_gene_names)}}</p>
+<p>Input genes are automatically converted to known synonyms and accessions for <i>E. coli</i> B and W. 
+<p>
+<table width = "100%" style="border: 1px solid black; text-align:center; border-collapse:collapse">
+<tr>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Gene</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>DOI</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Selected Phenotype</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Type</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Category</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Genotype</b></td>
+</tr>
+{% for mutant_genotype in records %}
+	<tr>
+	{% for i in range(0, len(mutant_genotype)) %}
+		{% set entry = mutant_genotype[i] %}
+		{% set is_list = isinstance(entry, list) %}
+		{% if i < len(mutant_genotype) - 1 %}
+			{% if is_list %}
+				<td style="border-bottom: 1pt solid black; margin: 10px 10px;">
+				{% for z in entry %}
+					{{z}}<br>
+				{% end %}
+				</td>
+			{% else %}
+				<td width="10%" style="border-bottom: 1pt solid black;">{{entry}}</td>
+			{% end %}
+		{% else %}
+			{% if is_list %}
+				<td width = "25%" style="border-bottom: 1pt solid black; text-align:left; margin: 10px 10px;">
+				{% for z in entry %}
+					{{z}}<br>
+				{% end %}
+				</td>
+			{% else %}
+				<td>{{entry}}</td>
+			{% end %}
+		{% end %}
+	{% end %}
+	</tr>
+{% end %}
+</table>
+</p>
 <p>logos</p>
 </div>
 

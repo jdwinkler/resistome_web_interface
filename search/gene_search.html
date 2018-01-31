@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<title>
+The Resistome Search Tool
+</title>
+</head>
+
+<body>
+
+<img src = "/static/resistome_logo.png" alt = "The Resistome Database" style="position: absolute; left: 33%">
+
+<div style="position: absolute; left: 30%; top: 68%; width: 600px; text-align:justify">
+<p></p>
+<p><b>Search for a gene:</b><br>
+
+<form action="/query/" method="post" style="text-align:left">
+  <b><i>E. coli</i> gene name (b0001, thrL):</b> <input type="text" name="single_gene" required> <br>
+  <input type="radio" name="specific" value="true" checked required> Return mutations for target gene(s) only<br>
+  <input type="radio" name="specific" value="false" required> Return full genotypes containing target gene(s)<br>
+  <input type="submit" value="Search">
+</form>
+
+</p>
+<p><b>Search for a set of genes (one gene per line):</b><br>
+
+<form action="/query/" method="post" style="text-align:left">
+  <textarea name="gene_list" rows="15" cols="50" required></textarea> <br>
+  <input type="radio" name="specific" value="true" checked required> Return mutations for target gene(s) only<br>
+  <input type="radio" name="specific" value="false" required> Return full genotypes containing target gene(s)<br>
+  <input type="submit" value="Search">
+</form>
+
+</p>
+<p><b>Acknowledgements</b></p>
+Questions, comments or suggestions about this website or the Resistome? Please contact <a href="mailto:james.winkler@gmail.com">James Winkler</a> for assistance.</p>
+
+</div>
+
+</body>
+
+</html>
