@@ -13,6 +13,7 @@ MAIN_DIR = ''
 QUERY_DIR = ''
 resistome_handler = None
 
+
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
 
@@ -45,32 +46,33 @@ class QueryHandler(tornado.web.RequestHandler):
 
             self.render(os.path.join(QUERY_DIR, 'gene_search.html'))
 
+        elif 'Phenotype' in query_type:
+
+            self.render(os.path.join(QUERY_DIR, 'phenotype_search.html'))
+
     def post(self):
 
-        single_gene_query = self.get_argument('single_gene', default=None)
-
         specific_flag = self.get_argument('specific', True)
-
         specific_flag = True if specific_flag == 'true' else False
 
-        if single_gene_query is None:
-            single_gene_query = []
-        else:
-            single_gene_query = [single_gene_query]
-
         multi_gene_query = self.get_arguments('gene_list')
+        multi_phenotype_query = self.get_arguments('phenotype_list')
 
         if len(multi_gene_query) == 1:
             multi_gene_query = multi_gene_query[0].split('\n')
             multi_gene_query = [x.strip() for x in multi_gene_query]
 
-        records = []
-        records.extend(single_gene_query)
-        records.extend(multi_gene_query)
+        if len(multi_phenotype_query) == 1:
+            multi_phenotype_query = multi_phenotype_query[0].split('\n')
+            multi_phenotype_query = [x.strip() for x in multi_phenotype_query]
 
-        names, mutant_text_array = resistome_handler.get_mutant_output(records, specific_flag=specific_flag)
+        g_names, p_names, mutant_text_array = resistome_handler.get_mutant_output(multi_gene_query,
+                                                                       multi_phenotype_query,
+                                                                       specific_flag=specific_flag)
 
-        self.render(os.path.join(QUERY_DIR, 'results.html'), records=mutant_text_array, converted_gene_names = names)
+        self.render(os.path.join(QUERY_DIR, 'results.html'), records=mutant_text_array,
+                    converted_gene_names = g_names,
+                    converted_phenotype_names = p_names)
 
 def main():
 

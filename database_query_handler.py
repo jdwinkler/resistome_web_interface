@@ -23,7 +23,7 @@ class ResistomeDBHandler:
         self.connection = connection
         self.cursor = cursor
 
-    def get_mutant_output(self, gene_names, specific_flag=False):
+    def get_mutant_output(self, gene_names, phenotype_names, specific_flag=False):
 
         """
         
@@ -35,28 +35,53 @@ class ResistomeDBHandler:
         if not isinstance(gene_names, list):
             gene_names = [gene_names]
 
-        std_gene_names, display_names = self.standardize_input_gene_names(gene_names)
+        std_gene_names, gene_display_names = self.standardize_input_gene_names(gene_names)
+        std_phenotype_names, _ = self.standardize_input_phenotype_names(phenotype_names)
 
         query_genes = [x[1] for x in std_gene_names]
+        query_phenotypes = [x[1] for x in std_phenotype_names]
 
         # get mutant id, name pairs for provided gene list
         self.cursor.execute('select resistome.mutations.mutant_id,'
                             'resistome.mutations.name '
                             'from resistome.mutations where resistome.mutations.name = ANY(%s) ', (query_genes,))
 
-        results = self.cursor.fetchall()
-        mutant_ids = []
-        mutant_dict = defaultdict(set)
-        for result in results:
-            mutant_ids.append(result['mutant_id'])
-            mutant_dict[result['mutant_id']].add(result['name'])
+        gene_results = self.cursor.fetchall()
+        gene_mutant_ids = []
+        gene_mutant_dict = defaultdict(set)
+        for result in gene_results:
+            gene_mutant_ids.append(result['mutant_id'])
+            gene_mutant_dict[result['mutant_id']].add(result['name'])
+
+        self.cursor.execute('select resistome.mutants.mutant_id,'
+                            'resistome.phenotypes.phenotype '
+                            'from resistome.mutants '
+                            'inner join resistome.phenotypes on (resistome.mutants.mutant_id = resistome.phenotypes.mutant_id)'
+                            'where resistome.phenotypes.phenotype = ANY(%s) ', (query_phenotypes,))
+
+        pheno_results = self.cursor.fetchall()
+        pheno_mutant_ids = []
+        pheno_mutant_dict = defaultdict(set)
+        for result in pheno_results:
+            pheno_mutant_ids.append(result['mutant_id'])
+            pheno_mutant_dict[result['mutant_id']].add(result['phenotype'])
 
         gene_names = [x[0] + ' (%s)' % x[1] for x in std_gene_names]
+        pheno_names = [x[0] + ' (%s)' % x[1] for x in std_phenotype_names]
 
-        return gene_names, self.prep_mutant_output(mutant_dict,
-                                       self.query_mutant_genotypes(mutant_ids),
-                                       only_affected_genes=specific_flag,
-                                        display_converter=display_names)
+        gene_text_output = self.prep_gene_mutant_output(gene_mutant_dict,
+                                                        self.query_mutant_genotypes(gene_mutant_ids),
+                                                        only_affected_genes=specific_flag,
+                                                        display_converter=gene_display_names)
+
+        pheno_text_output = self.prep_pheno_mutant_output(pheno_mutant_dict,
+                                                        self.query_mutant_genotypes(pheno_mutant_ids),
+                                                        only_affected_phenotypes=specific_flag,
+                                                        display_converter=None)
+
+        gene_text_output.extend(pheno_text_output)
+
+        return gene_names, pheno_names, gene_text_output
 
     def query_mutant_genotypes(self, mutant_ids):
 
@@ -126,8 +151,95 @@ class ResistomeDBHandler:
 
         return output, display_name
 
+    def standardize_input_phenotype_names(self, phenotype_names):
+
+        """
+
+        :param phenotype_names: list of strings represent E. coli genes
+        :return: converted_gene_names that are standardized into bnumbers, standard names
+
+        """
+
+        phenotype_names = [x.upper() for x in phenotype_names]
+
+        self.cursor.execute('select name, standard_name from resistome.phenotype_standardization '
+                            'where resistome.phenotype_standardization.name = ANY(%s)', (phenotype_names,))
+
+        requested_phenotypes = set(phenotype_names)
+        found_phenotypes = set()
+
+        output = []
+
+        display_name = dict()
+
+        for record in self.cursor:
+            output.append((record['name'], record['standard_name']))
+            found_phenotypes.add(record['name'])
+            found_phenotypes.add(record['standard_name'])
+
+            display_name[record['name']] = record['name']
+            display_name[record['standard_name']] = record['standard_name']
+
+        remaining_phenotypes = requested_phenotypes - found_phenotypes
+        for pheno in remaining_phenotypes:
+            output.append((pheno, pheno))
+
+        return output, display_name
+
     @staticmethod
-    def prep_mutant_output(mutant_to_queried_genes, records, only_affected_genes=False, display_converter=None):
+    def prep_pheno_mutant_output(mutant_to_queried_phenotypes, records, only_affected_phenotypes=False, display_converter=None):
+
+        output_text_lines = []
+
+        if display_converter is None:
+            display_converter = dict()
+
+        for record in records:
+
+            doi = record['doi'][0]
+            phenotype = record['phenotype']
+            phenotype_type = record['phenotype_type']
+
+            filter_phenotypes = set()
+
+            for p, t in zip(phenotype, phenotype_type):
+                filter_phenotypes.add((p, t))
+
+            filter_phenotypes = list(filter_phenotypes)
+            phenotype = [x[0] for x in filter_phenotypes]
+            phenotype_type = [x[1] for x in filter_phenotypes]
+
+            root = record['phenotype_class']
+
+            phenotypes_to_highlight = mutant_to_queried_phenotypes[record['mutant_id']]
+
+            if only_affected_phenotypes and len(set(phenotype) ^ set(phenotypes_to_highlight)) > 0:
+                continue
+
+            mutated_genes = record['genes']
+            mutation_types = record['mutation_type']
+            annotations = record['annotation']
+            gene_ids = record['gene_ids']
+
+            affected_phenotypes = sorted(list(set(phenotypes_to_highlight) & set(phenotype)))
+
+            gene_annotation_output = set()
+
+            for gene, m_type, annotation, gene_id in zip(mutated_genes, mutation_types, annotations, gene_ids):
+
+                if 'large_' in m_type:
+                    gene_annotation_output.add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+                else:
+                    gene_annotation_output.add(gene + ': ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+
+            gene_annotation_output = sorted(list(gene_annotation_output))
+
+            output_text_lines.append((affected_phenotypes, doi, phenotype, phenotype_type, root, gene_annotation_output))
+
+        return output_text_lines
+
+    @staticmethod
+    def prep_gene_mutant_output(mutant_to_queried_genes, records, only_affected_genes=False, display_converter=None):
 
         output_text_lines = []
 
@@ -221,14 +333,15 @@ class ResistomeDBHandler:
         elif mutation_type == 'amplified':
             return '(amplified %iX)' % annotation['amplified']
         elif mutation_type == 'duplication':
-            return annotation['duplication'][0] + '|' + str(annotation['duplication'][1]) + 'bp|' + \
+            prefix = '+' if annotation['duplication'][1] > 0 else '-'
+            return annotation['duplication'][0] + '|' + prefix + str(annotation['duplication'][1]) + ' bp|' + \
                    annotation['duplication'][2]
         elif mutation_type == 'large_amplification':
             return annotation[mutation_type][0] + '-' + annotation[mutation_type][1] + ' (amplified %iX)' % \
                                                                                        annotation[mutation_type][2]
         elif mutation_type == 'large_deletion':
             return annotation[mutation_type][0] + '-' + annotation[mutation_type][1] + ' (deleted)'
-        elif mutation_type == 'larger_inversion':
+        elif mutation_type == 'large_inversion':
             return annotation[mutation_type][0] + ' <=> ' + annotation[mutation_type][1] + ' (inverted)'
         elif mutation_type == 'mutated':
             return '(mutated)'
@@ -242,6 +355,8 @@ class ResistomeDBHandler:
             return 'repressed'
         elif mutation_type == 'integrated':
             return 'integrated'
+        elif mutation_type == 'frameshift':
+            return 'frameshift'
         else:
             raise ValueError('Unknown mutation type: %s' % mutation_type)
 

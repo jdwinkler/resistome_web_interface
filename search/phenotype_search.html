@@ -11,19 +11,20 @@ The Resistome Search Tool
 <img src = "/static/resistome_logo.png" alt = "The Resistome Database" style="position: absolute; left: 33%">
 
 <div style="position: absolute; left: 30%; top: 68%; width: 600px; text-align:justify">
-<p>Search tips: try to use the accession (bnumber, etc) for your gene of interest. All synonyms for your gene will also be checked against the database</p>
-<p><b>Search for a set of genes (one gene per line):</b><br>
+<p>Search tips: you can select as many phenotypes as desired by ctrl-clicking.</p>
+<p><b>Search for a set of phenotypes:</b><br>
 
 <form action="/query/" method="post" style="text-align:left">
-  <textarea name="gene_list" rows="15" cols="50" required></textarea> <br>
-  <input type="radio" name="specific" value="true" checked required> Return mutations for target gene(s) only<br>
-  <input type="radio" name="specific" value="false" required> Return full genotypes containing target gene(s)<br>
+  <textarea name="phenotype_list" rows="15" cols="50" required></textarea> <br>
+  <input type="radio" name="specific" value="true" checked required> Return genotypes with target phenotypes(s) only<br>
+  <input type="radio" name="specific" value="false" required> Return full genotypes with target phenotypes(s)<br>
   <input type="submit" value="Search">
 </form>
 
 </p>
 <p><b>Acknowledgements</b></p>
 Questions, comments or suggestions about this website or the Resistome? Please contact <a href="mailto:james.winkler@gmail.com">James Winkler</a> for assistance.</p>
+
 </div>
 
 <div style="position: absolute; left: 30%; top: 132%; width: 600px; text-align:justify">
@@ -31,6 +32,7 @@ Questions, comments or suggestions about this website or the Resistome? Please c
 	<img src = "/static/fulbright_logo.jpg" alt = "Fulbright Foundation" style="position: absolute; left: 35%" width="200px" height="63px">
 	<img src = "/static/nsf_logo.jpg" alt = "National Science Foundation" style="position: absolute; left: 75%" width="100px" height="100px">
 </div>
+
 
 </body>
 
