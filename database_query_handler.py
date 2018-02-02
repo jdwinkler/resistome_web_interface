@@ -23,6 +23,10 @@ class ResistomeDBHandler:
         self.connection = connection
         self.cursor = cursor
 
+    def __del__(self):
+
+        self.connection.close()
+
     def get_mutant_output(self, gene_names, phenotype_names, specific_flag=False):
 
         """
