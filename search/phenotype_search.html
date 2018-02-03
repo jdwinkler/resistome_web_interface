@@ -15,10 +15,15 @@ The Resistome Search Tool
 <p><b>Search for a set of phenotypes:</b><br>
 
 <form action="/query/" method="post" style="text-align:center">
-  <textarea name="phenotype_list" rows="15" cols="50" required></textarea> <br>
-  <input type="radio" name="specific" value="true" checked required> Return genotypes with target phenotypes(s) only<br>
-  <input type="radio" name="specific" value="false" required> Return full genotypes with target phenotypes(s)<br><br>
-  <input type="submit" value="Search">
+	<select multiple size="15" name="phenotype_list">
+		{% for (option, display_value) in phenotype_list %}
+			<option value="{{option}}">{{display_value}}</option>
+		{% end %}
+	</select>
+	<br>
+	<input type="radio" name="specific" value="true" checked required> Return genotypes with target phenotypes(s) only<br>
+	<input type="radio" name="specific" value="false" required> Return full genotypes with target phenotypes(s)<br><br>
+	<input type="submit" value="Search">
 </form>
 
 </p>

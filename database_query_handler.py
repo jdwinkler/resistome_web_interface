@@ -27,6 +27,21 @@ class ResistomeDBHandler:
 
         self.connection.close()
 
+    def get_phenotype_listing(self):
+
+        self.cursor.execute('SELECT resistome.phenotype_standardization.standard_name,'
+                            'resistome.phenotype_standardization.phenotype_type '
+                            'from resistome.phenotype_standardization')
+
+        output = set()
+
+        for record in self.cursor:
+
+            output.add(record['standard_name'])
+            output.add(record['phenotype_type'])
+
+        return sorted(list(output))
+
     def get_mutant_output(self, gene_names, phenotype_names, specific_flag=False):
 
         """
@@ -99,7 +114,7 @@ class ResistomeDBHandler:
                        'array_agg(resistome.annotations.mutation_type) as mutation_type,'
                        'array_agg(resistome.annotations.annotation) as annotation,'
                        'array_agg(resistome.annotations.gene_id) as gene_ids,'
-                       'resistome.mutants.mutant_id '
+                       'resistome.mutants.mutant_id, resistome.mutants.species, resistome.mutants.strain '
                        'from resistome.mutants '
                        'inner join resistome.papers on (resistome.papers.paper_id = resistome.mutants.paper_id) '
                        'inner join resistome.mutations on (resistome.mutations.mutant_id = resistome.mutants.mutant_id) '
@@ -167,7 +182,11 @@ class ResistomeDBHandler:
         phenotype_names = [x.upper() for x in phenotype_names]
 
         self.cursor.execute('select name, standard_name from resistome.phenotype_standardization '
-                            'where resistome.phenotype_standardization.name = ANY(%s)', (phenotype_names,))
+                            'where resistome.phenotype_standardization.name = ANY(%s) OR '
+                            'resistome.phenotype_standardization.standard_name = ANY(%s) OR '
+                            'resistome.phenotype_standardization.phenotype_type = ANY(%s)', (phenotype_names,
+                                                                                             phenotype_names,
+                                                                                             [x.lower() for x in phenotype_names]))
 
         requested_phenotypes = set(phenotype_names)
         found_phenotypes = set()
@@ -200,6 +219,10 @@ class ResistomeDBHandler:
 
         for record in records:
 
+            title = record['title'][0]
+            mutant_id = record['mutant_id']
+            species = record['species']
+            strain = record['strain']
             doi = record['doi'][0]
             phenotype = record['phenotype']
             phenotype_type = record['phenotype_type']
@@ -229,7 +252,7 @@ class ResistomeDBHandler:
 
             gene_annotation_output = set()
 
-            for gene, m_type, annotation, gene_id in zip(mutated_genes, mutation_types, annotations, gene_ids):
+            for gene, m_type, annotation in zip(mutated_genes, mutation_types, annotations):
 
                 if 'large_' in m_type:
                     gene_annotation_output.add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
@@ -238,14 +261,26 @@ class ResistomeDBHandler:
 
             gene_annotation_output = sorted(list(gene_annotation_output))
 
-            output_text_lines.append((affected_phenotypes, doi, phenotype, phenotype_type, root, gene_annotation_output))
+            output_dict = {'title': title,
+                           'doi': doi,
+                           'id': mutant_id,
+                           'species': species,
+                           'strain': strain,
+                           'phenotypes': phenotype,
+                           'phenotype_types': phenotype_type,
+                           'root': root,
+                           'annotations': gene_annotation_output,
+                           'affected_genes' : [],
+                           'affected_phenotypes': affected_phenotypes}
+
+            output_text_lines.append(output_dict)
 
         return output_text_lines
 
     @staticmethod
     def prep_gene_mutant_output(mutant_to_queried_genes, records, only_affected_genes=False, display_converter=None):
 
-        output_text_lines = []
+        output_mutant_dicts = []
 
         if display_converter is None:
             display_converter = dict()
@@ -253,6 +288,9 @@ class ResistomeDBHandler:
         for record in records:
 
             title = record['title'][0]
+            mutant_id = record['mutant_id']
+            species = record['species']
+            strain = record['strain']
             doi = record['doi'][0]
             phenotype = record['phenotype']
             phenotype_type = record['phenotype_type']
@@ -291,10 +329,21 @@ class ResistomeDBHandler:
 
             gene_annotation_output = sorted(list(gene_annotation_output))
 
-            output_text_lines.append(
-                (affected_genes, doi, phenotype, phenotype_type, root, gene_annotation_output))
+            output_dict = {'title': title,
+                           'doi': doi,
+                           'id': mutant_id,
+                           'species': species,
+                           'strain': strain,
+                           'phenotypes': phenotype,
+                           'phenotype_types': phenotype_type,
+                           'root': root,
+                           'annotations': gene_annotation_output,
+                           'affected_genes' : affected_genes,
+                           'affected_phenotypes': []}
 
-        return output_text_lines
+            output_mutant_dicts.append(output_dict)
+
+        return output_mutant_dicts
 
     @staticmethod
     def standard_mutation_formatting(mutation_type, annotation):
@@ -361,6 +410,8 @@ class ResistomeDBHandler:
             return 'integrated'
         elif mutation_type == 'frameshift':
             return 'frameshift'
+        elif mutation_type == 'rbs_tuned':
+            return '(engineered RBS)'
         else:
-            raise ValueError('Unknown mutation type: %s' % mutation_type)
+            return '(%s)' % mutation_type
 

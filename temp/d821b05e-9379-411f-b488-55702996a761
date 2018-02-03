@@ -1,0 +1,20 @@
+# Queried genes: TOLC (ECW_M3301),TOLC (B3035),TOLC (ECB_02907)
+# Queried phenotypes: 
+# Date of search: 2018-02-02 23:06
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
+High-throughput laboratory evolution of Escherichia coli under multiple stress environments	10.1101/143792	109	B3035		Escherichia coli	MG1655	COBALT CHLORIDE,CETYLPYRIDINIUM CHLORIDE	R,R	detergents,metal_ions	B3035: P453L,B3035: SNP(s) C3179473T
+The predictability of molecular evolution during functional innovation	10.1073/pnas.1318797111/	907	B3035		Escherichia coli	MG1655	GROWTH	R	general_growth	B3035: G80V,B3035: SNP(s) G6354491T
+Functional characterisation of altered outer membrane proteins for tetracycline resistance in Escherichia coli	10.1016/j.ijantimicag.2008.04.015	1265	B3035		Escherichia coli	MG1655	TETRACYCLINE	S	antichemo	B3035: (deleted)
+Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1584	B3035		Escherichia coli	MG1655	AMPICILLIN	S	antichemo	B3035: (deleted)
+Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1642	B3035		Escherichia coli	MG1655	CIPROFLOXACIN	S	antichemo	B3035: (deleted)
+Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1759	B3035		Escherichia coli	MG1655	GENTAMICIN	S	antichemo	B3035: (deleted)
+Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1784	B3035		Escherichia coli	MG1655	SULFAMETHOXAZOLE	S	antichemo	B3035: (deleted)
+Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1837	B3035		Escherichia coli	MG1655	METRONIDAZOLE	S	antichemo	B3035: (deleted)
+Rapid profiling of a microbial genome using mixtures of barcoded oligonucleotides	10.1038/nbt.1653	2947	B3035		Escherichia coli	MG1655	L-VALINE,FUCOSE,METHYLGLYOXAL	S,S,S	aa_antimetabolite,general_antimetabolite,general_growth	B3035: integrated,B3035: repressed
+Rapid profiling of a microbial genome using mixtures of barcoded oligonucleotides	10.1038/nbt.1653	3625	B3035		Escherichia coli	MG1655	LURIA-BERTANI BROTH,MOPS	S,S	general_growth	B3035: integrated,B3035: overexpressed
+Combinatorial Strategies for Improving Multiple-Stress Resistance in Industrially Relevant Escherichia coli Strains	10.1128/AEM.01542-14	5347	ECW_M3301		Escherichia coli	W	SODIUM CHLORIDE	S	osmotic_stress	ECW_M3301: IS insertion Tn5
+Many Chromosomal Genes Modulate MarA-Mediated Multidrug Resistance in Escherichia coli	10.1128/AAC.01420-09	5612	B3035		Escherichia coli	MG1655	CHLORAMPHENICOL,NORFLOXACIN,CEFOXITIN	S,S,S	antichemo	B3035: IS insertion Tn5
+Antibiotic Sensitivity Profiles Determined with an Escherichia coli Gene Knockout Collection: Generating an Antibiotic Bar Code	10.1128/AAC.00906-09	5852	B3035		Escherichia coli	MG1655	ENOXACIN,AMPICILLIN,CEFOXITIN,TRICLOSAN,CIPROFLOXACIN,FUSIDIC ACID,NITROFURANTOIN,CHLORAMPHENICOL,ERYTHROMYCIN,TETRACYCLINE	S,S,S,S,S,S,S,S,S,S	antichemo	B3035: (deleted)
+Single-Gene Deletion Mutants of Escherichia coli with Altered Sensitivity to Bicyclomycin, an Inhibitor of Transcription Termination Factor Rho	10.1128/JB.01463-10	5969	B3035		Escherichia coli	MG1655	BICYCLOMYCIN	S	antichemo	B3035: (deleted)
+Antibiotic Susceptibility Profiles of Escherichia coli Strains Lacking Multidrug Efflux Pump Genes	10.1128/AAC.45.4.1126-1136.2001	6233	B3035		Escherichia coli	MG1655	AMPICILLIN,METHOTREXATE,PUROMYCIN,FUSIDIC ACID,NOVOBIOCIN,NALIDIXIC ACID,CHLORAMPHENICOL,FLORFENICOL,ERYTHROMYCIN	S,R,S,S,S,S,S,S,S	antichemo	B3035: (deleted)
+Antibiotic Susceptibility Profiles of Escherichia coli Strains Lacking Multidrug Efflux Pump Genes	10.1128/AAC.45.4.1126-1136.2001	6235	B3035		Escherichia coli	MG1655	METHOTREXATE,PUROMYCIN,FUSIDIC ACID,NOVOBIOCIN,NALIDIXIC ACID,CHLORAMPHENICOL,FLORFENICOL,ERYTHROMYCIN	R,S,S,S,S,S,S,S	antichemo	B3035: (deleted)

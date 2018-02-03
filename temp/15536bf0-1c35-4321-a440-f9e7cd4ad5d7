@@ -1,0 +1,18 @@
+# Queried genes: OMPA (B0957),OMPA (ECB_00961),OMPA (ECW_M1067)
+# Queried phenotypes: 
+# Date of search: 2018-02-02 23:06
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
+Improvement of isopropanol tolerance of Escherichia coli using adaptive laboratory evolution and omics technologies	10.1016/j.jbiotec.2017.06.408	117	B0957		Escherichia coli	MG1655	ISOBUTANOL	R	solvents_biofuels	B0924-B1245 (amplified 2X)
+Genome evolution and adaptation in a long-term experiment with Escherichia coli	10.1038/nature08480	256	ECB_00961		Escherichia coli	REL606	GROWTH	R	general_growth	ECB_00586 <=> ECB_02022 (inverted)
+Genome-wide Escherichia coli stress response and improved tolerance towards industrially relevant chemicals	10.1186/s12934-016-0577-5	397	B0957		Escherichia coli	MG1655	GERANIOL,ACETATE,N-BUTANOL,DECANOIC ACID,BUTYROLACTONE,BUTANEDIOL,FURFURAL,LEVULINIC ACID,ITACONATE	R,R,R,R,R,R,R,R,R	furans,organic_acid (neutral),other,solvents_biofuels	B0957: IS insertion Tn5
+Escherichia coli Genes and Pathways Involved in Surviving Extreme Exposure to Ioninzing Radiation	10.1128/JB.01589-14	2183	B0957		Escherichia coli	MG1655	GAMMA RAYS	S	radiation	B0957: (deleted)
+Comparative genomics and transcriptomics analysis of experimentally evolved Escherichia coli MC1000 in complex environments	10.1111/1462-2920.12239	2203	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) A1019562G
+Comparative genomics and transcriptomics analysis of experimentally evolved Escherichia coli MC1000 in complex environments	10.1111/1462-2920.12239	2204	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) A1019562G
+Comparative genomics and transcriptomics analysis of experimentally evolved Escherichia coli MC1000 in complex environments	10.1111/1462-2920.12239	2207	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) A1019562G
+Comparative genomics and transcriptomics analysis of experimentally evolved Escherichia coli MC1000 in complex environments	10.1111/1462-2920.12239	2213	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) A1019562G
+Comparative genomics and transcriptomics analysis of experimentally evolved Escherichia coli MC1000 in complex environments	10.1111/1462-2920.12239	2215	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) A1019562G
+Rapid profiling of a microbial genome using mixtures of barcoded oligonucleotides	10.1038/nbt.1653	2865	B0957		Escherichia coli	MG1655	LURIA-BERTANI BROTH,MOPS	S,S	general_growth	B0957: integrated,B0957: repressed
+Acid-Adapted Strains of Escherichia coli K-12 Obtained by Experimental Evolution	10.1128/AEM.03494-14	6243	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) C1019051A,B0957: intergenic B0956/B0957
+Determinants of spontaneous mutation in the bacterium Escherichia coli as revealed by whole-genome sequencing	10.1073/pnas.1512136112	6320	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) T1019063A
+Determinants of spontaneous mutation in the bacterium Escherichia coli as revealed by whole-genome sequencing	10.1073/pnas.1512136112	6321	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) C1019089G
+Determinants of spontaneous mutation in the bacterium Escherichia coli as revealed by whole-genome sequencing	10.1073/pnas.1512136112	6322	B0957		Escherichia coli	MG1655	GROWTH	R	general_growth	B0957: SNP(s) C1019163T

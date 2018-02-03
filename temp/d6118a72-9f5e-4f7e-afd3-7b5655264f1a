@@ -1,0 +1,46 @@
+# Queried genes: MREB (ECB_03110),MREB (ECW_M3517),MREB (B3251)
+# Queried phenotypes: 
+# Date of search: 2018-02-02 22:58
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
+Generation of a platform strain for ionic liquid tolerance using adaptive laboratory evolution	10.1186/s12934-017-0819-1	55	B3251		Escherichia coli	MG1655	IONIC LIQUIDS	R	solvents_biofuels	B3251: D43V,B3251: SNP(s) A3882849T
+Contrasting effects of historical contingency on phenotypic and genomic trajectories during a two-step evolution experiment with bacteria	10.1186/s12862-016-0662-8	210	ECB_03110		Escherichia coli	REL606	GROWTH	R	general_growth	ECB_03110: S9P
+Evolutionary history and genetic parallelism affect correlated responses to evolution	10.1111/mec.12312	1565	ECB_03110		Escherichia coli	REL606	GROWTH	R	general_growth	ECB_03110: S9P
+Directed Evolution of Ionizing Radiation Resistance in Escherichia coli	10.1128/JB.00502-09	1888	B3251		Escherichia coli	MG1655	IONIZING RADIATION	R	radiation	B3251: intergenic B3251/B3252
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1900	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: A147V
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1931	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: A132S
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1942	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: G133C
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1944	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: I335N
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1951	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: L292P
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1957	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: R187C
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1959	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: A145T
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1969	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: S9P
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1971	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: R5H
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1993	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: V109I
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1995	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: V291A
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1999	ECB_03110		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_03110: S9P
+Use of Adaptive Laboratory Evolution To Discover Key Mutations Enabling Rapid Growth of Escherichia coli K-12 MG1655 on Glucose Minimal Medium	10.1128/AEM.02246-14	2258	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: E345A
+Rapid profiling of a microbial genome using mixtures of barcoded oligonucleotides	10.1038/nbt.1653	3217	B3251		Escherichia coli	MG1655	LURIA-BERTANI BROTH,L-VALINE,FUCOSE,METHYLGLYOXAL	S,S,S,S	aa_antimetabolite,general_antimetabolite,general_growth	B3251: integrated,B3251: overexpressed
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6053	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: A124V
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6055	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: E136A
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6056	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: A124V
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6058	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: A173T
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6059	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: R126H
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6061	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: R126H
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6062	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: A124V
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6064	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: A124V
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6066	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: A124V
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6067	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: R123S
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6068	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: R123C
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6069	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: R123C
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6070	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: R123S
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6071	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: A124V
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6072	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: R123S
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6073	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: L16Q
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6074	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: L16Q
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6075	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: D82E
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6076	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: D82Y
+Mutations in cell elongation genes mreB, mrdA and mrdB suppress the shape defect of RodZ-deficient cells	10.1111/mmi.12148	6078	B3251		Escherichia coli	MG1655	GROWTH	R	general_growth	B3251: G328C
+Evolved Osmotolerant Escherichia coli Mutants Frequently Exhibit Defective N-Acetylglucosamine Catabolism and Point Mutations in Cell Shape-Regulating Protein MreB	10.1128/AEM.00499-14	6480	B3251		Escherichia coli	MG1655	SODIUM CHLORIDE	R	osmotic_stress	B3251: I335L
+Evolved Osmotolerant Escherichia coli Mutants Frequently Exhibit Defective N-Acetylglucosamine Catabolism and Point Mutations in Cell Shape-Regulating Protein MreB	10.1128/AEM.00499-14	6482	B3251		Escherichia coli	MG1655	SODIUM CHLORIDE	R	osmotic_stress	B3251: T170S
+Evolved Osmotolerant Escherichia coli Mutants Frequently Exhibit Defective N-Acetylglucosamine Catabolism and Point Mutations in Cell Shape-Regulating Protein MreB	10.1128/AEM.00499-14	6483	B3251		Escherichia coli	MG1655	SODIUM CHLORIDE	R	osmotic_stress	B3251: S184F
+Evolved Osmotolerant Escherichia coli Mutants Frequently Exhibit Defective N-Acetylglucosamine Catabolism and Point Mutations in Cell Shape-Regulating Protein MreB	10.1128/AEM.00499-14	6485	B3251		Escherichia coli	MG1655	SODIUM CHLORIDE	R	osmotic_stress	B3251: K95Q

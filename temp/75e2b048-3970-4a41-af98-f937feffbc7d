@@ -1,0 +1,24 @@
+# Queried genes: DNAG (ECB_02936),DNAG (B3066),DNAG (ECW_M3333)
+# Queried phenotypes: 
+# Date of search: 2018-02-02 23:05
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
+Laboratory Evolution to Alternating Substrate Environments Yields Distinct Phenotypic and Genetic Adaptive Strategies	10.1128/AEM.00410-17	6	B3066		Escherichia coli	MG1655	GROWTH	R	general_growth	B3066: G163A,B3066: SNP(s) G3211596C
+Directed Evolution of Ionizing Radiation Resistance in Escherichia coli	10.1128/JB.00502-09	1888	B3066		Escherichia coli	MG1655	IONIZING RADIATION	R	radiation	B3066: R139H
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1893	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1894	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1910	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1911	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1918	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1919	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1920	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1939	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1951	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1963	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1972	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1974	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1984	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	1988	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+The Molecular Diversity of Adaptive Convergence	10.1126/science.1212986	2001	ECB_02936		Escherichia coli	REL606	HEAT	R	high_temperature	ECB_02936: intergenic ECB_02936/ECB_02937
+Systems based mapping demonstrates that recovery from alkylation damage requires DNA repair, RNA processing, and translation associated networks	10.1016/j.ygeno.2008.09.001	2085	B3066		Escherichia coli	MG1655	METHYL METHANESULFONATE	S	mutagens	B3066: (deleted)
+Rapid profiling of a microbial genome using mixtures of barcoded oligonucleotides	10.1038/nbt.1653	4796	B3066		Escherichia coli	MG1655	L-VALINE,FUCOSE	S,S	aa_antimetabolite,general_growth	B3066: integrated,B3066: repressed
+Determinants of spontaneous mutation in the bacterium Escherichia coli as revealed by whole-genome sequencing	10.1073/pnas.1512136112	6320	B3066		Escherichia coli	MG1655	GROWTH	R	general_growth	B3066: SNP(s) G3211161A

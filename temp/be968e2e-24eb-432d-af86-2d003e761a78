@@ -1,0 +1,17 @@
+# Queried genes: 
+# Queried phenotypes: PH9.5 (ALKALINE),PH9 (ALKALINE),PH8 (ALKALINE),ALKALINE (ALKALINE),PH10 (ALKALINE),NA2CO3 (SODIUM BICARBONATE),HIGH_PH (HIGH_PH)
+# Date of search: 2018-02-02 22:57
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
+High-throughput laboratory evolution of Escherichia coli under multiple stress environments	10.1101/143792	61		SODIUM BICARBONATE	Escherichia coli	MG1655	SODIUM BICARBONATE	R	high_ph	B0414: indel 434613|-1 bp|absolute,B0414: intergenic B0414/B1662,B1290: P100T,B1290: SNP(s) G1352128T,B1662: indel 1743759|-1 bp|absolute,B1662: intergenic B0414/B1662,B3289: SNP(s) G3436287T,B3289: W360C
+High-throughput laboratory evolution of Escherichia coli under multiple stress environments	10.1101/143792	69		SODIUM BICARBONATE	Escherichia coli	MG1655	MALATE,CROTONATE,SODIUM BICARBONATE,METHYLGLYOXAL	S,R,S,S	general_antimetabolite,high_ph,organic_acid (neutral)	B3786-B3787 (deleted),B3988: A1321V,B3988: SNP(s) C4189312T
+High-throughput laboratory evolution of Escherichia coli under multiple stress environments	10.1101/143792	70		SODIUM BICARBONATE	Escherichia coli	MG1655	SODIUM BICARBONATE,CETYLPYRIDINIUM CHLORIDE	R,R	detergents,high_ph	B1106: indel 1163314|-1 bp|absolute,B3783: R108L,B3783: SNP(s) G3966740T
+High-throughput laboratory evolution of Escherichia coli under multiple stress environments	10.1101/143792	76		SODIUM BICARBONATE	Escherichia coli	MG1655	SODIUM BICARBONATE,COBALT CHLORIDE,METHACRYLATE	R,R,R	high_ph,metal_ions,organic_acid (neutral)	B0417: R10H,B0417: SNP(s) G435663A,B1294: A160T,B1294: SNP(s) C1355947T
+High-throughput laboratory evolution of Escherichia coli under multiple stress environments	10.1101/143792	85		SODIUM BICARBONATE	Escherichia coli	MG1655	SODIUM BICARBONATE,MALATE	R,S	high_ph,organic_acid (neutral)	B0178: indel 200569|-1 bp|absolute,B3298: D37V,B3298: SNP(s) T3442225A
+High-throughput laboratory evolution of Escherichia coli under multiple stress environments	10.1101/143792	112		SODIUM BICARBONATE	Escherichia coli	MG1655	SODIUM BICARBONATE,METHYLGLYOXAL	R,R	general_antimetabolite,high_ph	B0417: F12Y,B0417: SNP(s) T435669A,B1829: Q42*,B1829: SNP(s) G1911821A,B2829: I138N,B2829: SNP(s) T2966601A
+CpxP, a Stress-Combative Member of the Cpx Regulon	0021-9193/98/$04.0010	1307		ALKALINE	Escherichia coli	MG1655	ALKALINE	S	high_ph	B3911: (deleted)
+CpxP, a Stress-Combative Member of the Cpx Regulon	0021-9193/98/$04.0010	1308		ALKALINE	Escherichia coli	MG1655	ALKALINE	S	high_ph	B3912: (deleted)
+CpxP, a Stress-Combative Member of the Cpx Regulon	0021-9193/98/$04.0010	1309		ALKALINE	Escherichia coli	MG1655	ALKALINE	S	high_ph	B4484: (deleted)
+YhbO Protects Cells against Multiple Stresses	10.1128/JB.01208-07	1312		ALKALINE	Escherichia coli	MG1655	ALKALINE,ACID,H2O2,UV RADIATION,HEAT	S,S,S,S,S	high_ph,high_temperature,low_ph,oxidative,radiation	B3153: (deleted)
+Multidrug resistance protein MdtM adds to the repertoire of antiporters involved in alkaline pH homeostasis in Escherichia coli	10.1186/1471-2180-13-113	1321		ALKALINE	Escherichia coli	MG1655	ALKALINE	S	high_ph	B4337: (deleted)
+Alkalitolerance: A biological function for a multidrug transporter in pH homeostasis	10.1073/pnas.0405375101	1370		ALKALINE	Escherichia coli	MG1655	ALKALINE	S	high_ph	B0842: (deleted)
+Alkalitolerance: A biological function for a multidrug transporter in pH homeostasis	10.1073/pnas.0405375101	1371		ALKALINE	Escherichia coli	MG1655	ALKALINE	R	high_ph	B0842: overexpressed,B0842: plasmid expression

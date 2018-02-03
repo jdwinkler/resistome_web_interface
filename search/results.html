@@ -13,45 +13,52 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 <div style="position: absolute; left: 12.5%; top: 68%; width: 1200px; text-align:justify">
 <p>Your query examined the following genes: {{ ', '.join(converted_gene_names)}}</p>
 <p>Your query examined the following phenotypes: {{ ', '.join(converted_phenotype_names)}}</p>
-<p>Input genes are automatically converted to known synonyms and accessions for <i>E. coli</i> B and W. 
+<p>Input genes are automatically converted to known synonyms and accessions for <i>E. coli</i> B and W. Click <a href="/temp/{{temp_file_name}}">here</a> to download your results as a tab-delimited table.
 <p>
 <table width = "100%" style="border: 1px solid black; text-align:center; border-collapse:collapse">
 <tr>
-	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Gene</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>DOI</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Mutant ID</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>T_Gene(s)</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>T_Phenotype(s)</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Selected Phenotype</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Type</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Category</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Genotype</b></td>
 </tr>
-{% for mutant_genotype in records %}
-	<tr>
-	{% for i in range(0, len(mutant_genotype)) %}
-		{% set entry = mutant_genotype[i] %}
-		{% set is_list = isinstance(entry, list) %}
-		{% if i < len(mutant_genotype) - 1 %}
-			{% if is_list %}
-				<td style="border-bottom: 1pt solid black; margin: 10px 10px;">
-				{% for z in entry %}
-					{{z}}<br>
+{% if len(records) == 0 %}
+	<tr><td style="border-bottom: 1pt solid black; text-align:center" colspan="8"><b>No results found!</b></td></tr>
+{% else %}
+
+	{% for mutant_genotype in records %}
+		<tr>
+		{% for i in range(0, len(mutant_genotype)) %}
+			{% set entry = mutant_genotype[i] %}
+			{% set is_list = isinstance(entry, list) %}
+			{% if i < len(mutant_genotype) - 1 %}
+				{% if is_list %}
+					<td style="border-bottom: 1pt solid black; margin: 10px 10px;">
+					{% for z in entry %}
+						{{z}}<br>
+					{% end %}
+					</td>
+				{% else %}
+					<td width="10%" style="border-bottom: 1pt solid black;">{{entry}}</td>
 				{% end %}
-				</td>
 			{% else %}
-				<td width="10%" style="border-bottom: 1pt solid black;">{{entry}}</td>
-			{% end %}
-		{% else %}
-			{% if is_list %}
-				<td width = "25%" style="border-bottom: 1pt solid black; text-align:left; margin: 10px 10px;">
-				{% for z in entry %}
-					{{z}}<br>
+				{% if is_list %}
+					<td width = "25%" style="border-bottom: 1pt solid black; text-align:left; margin: 10px 10px;">
+					{% for z in entry %}
+						{{z}}<br>
+					{% end %}
+					</td>
+				{% else %}
+					<td>{{entry}}</td>
 				{% end %}
-				</td>
-			{% else %}
-				<td>{{entry}}</td>
 			{% end %}
 		{% end %}
+		</tr>
 	{% end %}
-	</tr>
 {% end %}
 </table>
 </p>

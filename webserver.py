@@ -3,16 +3,36 @@
 import tornado.ioloop
 import tornado.web
 import os.path
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from collections import defaultdict
-from threading import Thread
 from database_query_handler import ResistomeDBHandler
+import uuid
+import datetime
 
 MAIN_DIR = ''
 QUERY_DIR = ''
+TEMP_DIR = ''
 resistome_handler = None
+phenotype_listing = None
 
+display_order = ['doi',
+                 'id',
+                 'affected_genes',
+                 'affected_phenotypes',
+                 'phenotypes',
+                 'phenotype_types',
+                 'root',
+                 'annotations']
+
+serialize_order = ['title',
+                   'doi',
+                   'id',
+                   'affected_genes',
+                   'affected_phenotypes',
+                   'species',
+                   'strain',
+                   'phenotypes',
+                   'phenotype_types',
+                   'root',
+                   'annotations']
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -29,26 +49,82 @@ class MainHandler(tornado.web.RequestHandler):
 
         elif 'Phenotype' in query_type:
 
-            self.render(os.path.join(QUERY_DIR, 'phenotype_search.html'))
+            self.render(os.path.join(QUERY_DIR, 'phenotype_search.html'), phenotype_list = phenotype_listing)
 
         else:
 
             pass
 
 
+class FileHandler(tornado.web.RequestHandler):
+
+    def get(self, fname):
+
+        file_name = os.path.join(TEMP_DIR, fname)
+
+        if file_name is None:
+            self.finish()
+
+        self.set_header('Content-Type', 'application/text')
+        self.set_header('Content-Disposition', 'attachment; filename=resistome_data.txt')
+        with open(file_name, 'rU') as f:
+            for line in f:
+                self.write(line)
+        self.finish()
+
+
 class QueryHandler(tornado.web.RequestHandler):
 
-    def get(self):
+    def mutant_dict_to_web_tuple(self, mutant_dict):
 
-        query_type = self.get_argument('search', default='')
+        output = []
 
-        if 'Gene' in query_type:
+        for x in display_order:
 
-            self.render(os.path.join(QUERY_DIR, 'gene_search.html'))
+            if isinstance(mutant_dict[x], list):
+                if len(mutant_dict[x]) > 0:
+                    output.append(mutant_dict[x])
+                else:
+                    output.append('N/A')
+            else:
+                output.append(str(mutant_dict[x]))
 
-        elif 'Phenotype' in query_type:
+        return tuple(output)
 
-            self.render(os.path.join(QUERY_DIR, 'phenotype_search.html'))
+    def mutant_dict_to_serialized_tuples(self, mutant_dict):
+
+        output = []
+
+        for x in serialize_order:
+
+            if isinstance(mutant_dict[x], list):
+                output.append(','.join(mutant_dict[x]))
+            else:
+                output.append(str(mutant_dict[x]))
+
+        return tuple(output)
+
+    def output_to_file(self, queried_gene_names, queried_phenotype_names, mutant_text_data):
+
+        now = datetime.datetime.now()
+
+        file_name = str(uuid.uuid4())
+
+        fhandle = open(os.path.join(TEMP_DIR, file_name), 'w')
+
+        fhandle.write('# Queried genes: %s' % ','.join(queried_gene_names) + '\n')
+        fhandle.write('# Queried phenotypes: %s' % ','.join(queried_phenotype_names) + '\n')
+        fhandle.write('# Date of search: %s' % now.strftime("%Y-%m-%d %H:%M") + '\n')
+
+        fhandle.write('\t'.join(serialize_order) + '\n')
+
+        for x in mutant_text_data:
+
+            fhandle.write('\t'.join(x) + '\n')
+
+        fhandle.close()
+
+        return file_name
 
     def post(self):
 
@@ -70,15 +146,35 @@ class QueryHandler(tornado.web.RequestHandler):
                                                                        multi_phenotype_query,
                                                                        specific_flag=specific_flag)
 
-        self.render(os.path.join(QUERY_DIR, 'results.html'), records=mutant_text_array,
+        web_output = [self.mutant_dict_to_web_tuple(x) for x in mutant_text_array]
+        serialized_output = [self.mutant_dict_to_serialized_tuples(x) for x in mutant_text_array]
+
+        fname = self.output_to_file(g_names, p_names, serialized_output)
+
+        self.render(os.path.join(QUERY_DIR, 'results.html'),
+                    records=web_output,
                     converted_gene_names = g_names,
-                    converted_phenotype_names = p_names)
+                    converted_phenotype_names = p_names,
+                    temp_file_name = fname)
+
 
 def main():
 
-    global MAIN_DIR, QUERY_DIR, resistome_handler
+    global MAIN_DIR, QUERY_DIR, TEMP_DIR, phenotype_listing, resistome_handler
 
     resistome_handler = ResistomeDBHandler()
+
+    phenotype_listing = resistome_handler.get_phenotype_listing()
+    temp = []
+
+    for phenotype in phenotype_listing:
+
+        if phenotype.islower():
+            temp.append((phenotype, phenotype + ' (category)'))
+        else:
+            temp.append((phenotype, phenotype))
+
+    phenotype_listing = temp
 
     current_location = os.path.realpath(__file__)
     path = os.path.split(current_location)[0]
@@ -86,11 +182,13 @@ def main():
     STATIC_DIR = os.path.join(path, 'static')
     TEMPLATE_DIR = os.path.join(path, 'templates')
     MAIN_DIR = os.path.join(path, 'main')
+    TEMP_DIR = os.path.join(path, 'temp')
     QUERY_DIR = os.path.join(path, 'search')
 
     handlers = [
         (r"/", MainHandler),
         (r"/query/", QueryHandler),
+        (r"/temp/(.*)", FileHandler),
         (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': STATIC_DIR})]
 
     application = tornado.web.Application(handlers, debug=True, template_path=TEMPLATE_DIR)

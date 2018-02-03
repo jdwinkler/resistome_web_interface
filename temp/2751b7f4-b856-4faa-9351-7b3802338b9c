@@ -1,0 +1,15 @@
+# Queried genes: 
+# Queried phenotypes: 3-HP (3-HP),2-BUTANOL (2-BUTANOL)
+# Date of search: 2018-02-02 21:56
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
+Identification of a 21 Amino Acid Peptide Conferring 3-Hydroxypropionic Acid Stress-Tolerance to Escherichia coli	10.1002/bit.24398	1107	B4706,B4706	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B4706: overexpressed,B4706: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2335	B0048,B0048	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B0048: overexpressed,B0048: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2336	B2599,B2599	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B2599: overexpressed,B2599: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2337	B3390,B3390,B3389,B3389	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B3389: overexpressed,B3389: plasmid expression,B3390: overexpressed,B3390: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2338	B3008,B3008	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B3008: overexpressed,B3008: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2339	B1704,B1704,B1704	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B1704: G148D,B1704: overexpressed,B1704: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2340	B0529,B0529	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B0529: overexpressed,B0529: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2341	B3930,B3930	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B3930: overexpressed,B3930: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2342	B2551,B2551	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B2551: overexpressed,B2551: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2343	B2913,B2913	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B2913: overexpressed,B2913: plasmid expression
+Rapid dissection of a complex phenotype through genomic-scale mapping of fitness altering genes	10.1016/j.ymben.2009.12.002	2344	B2600,B2600,B2601,B2601	3-HP	Escherichia coli	MG1655	3-HP	R	organic_acid (neutral)	B2600: overexpressed,B2600: plasmid expression,B2601: overexpressed,B2601: plasmid expression

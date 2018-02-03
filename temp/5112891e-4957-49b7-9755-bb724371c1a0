@@ -1,0 +1,9 @@
+# Queried genes: UVRC (ECW_M2087),UVRC (ECB_01878),UVRC (B1913)
+# Queried phenotypes: 
+# Date of search: 2018-02-02 23:02
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
+Genome evolution and adaptation in a long-term experiment with Escherichia coli	10.1038/nature08480	256	ECB_01878		Escherichia coli	REL606	GROWTH	R	general_growth	ECB_00586 <=> ECB_02022 (inverted)
+Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1824	B1913		Escherichia coli	MG1655	METRONIDAZOLE	S	antichemo	B1913: (deleted)
+Rapid profiling of a microbial genome using mixtures of barcoded oligonucleotides	10.1038/nbt.1653	2999	B1913		Escherichia coli	MG1655	L-VALINE,METHYLGLYOXAL	S,S	aa_antimetabolite,general_antimetabolite	B1913: integrated,B1913: repressed
+Antibiotic Sensitivity Profiles Determined with an Escherichia coli Gene Knockout Collection: Generating an Antibiotic Bar Code	10.1128/AAC.00906-09	5749	B1913		Escherichia coli	MG1655	NITROFURANTOIN	S	antichemo	B1913: (deleted)
+Single-Gene Deletion Mutants of Escherichia coli with Altered Sensitivity to Bicyclomycin, an Inhibitor of Transcription Termination Factor Rho	10.1128/JB.01463-10	5928	B1913		Escherichia coli	MG1655	BICYCLOMYCIN	S	antichemo	B1913: (deleted)
