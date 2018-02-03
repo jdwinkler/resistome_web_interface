@@ -2,6 +2,7 @@
 
 import tornado.ioloop
 import tornado.web
+import tornado.httpserver
 import os.path
 from database_query_handler import ResistomeDBHandler
 import uuid
@@ -193,8 +194,10 @@ def main():
 
     application = tornado.web.Application(handlers, debug=False, template_path=TEMPLATE_DIR)
 
+    http_server = tornado.httpserver.HTTPServer(application)
+
     port = int(os.environ.get("PORT", 5000))
-    application.listen(port)
+    http_server.listen(port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
