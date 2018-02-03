@@ -1,6 +1,3 @@
 [packages]
 tornado==4.3 
 psycopg2==2.6.1
-
-[requires]
-python_version = "2.7"
