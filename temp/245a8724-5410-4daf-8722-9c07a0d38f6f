@@ -1,6 +1,0 @@
-# Queried genes: 
-# Queried phenotypes: 1-2-4-BUTANETRIOL (1-2-4-BUTANETRIOL)
-# Date of search: 2018-02-02 22:23
-title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
-GroESL overexpression imparts Escherichia coli tolerance to i-, n-, and 2-butanol, 1,2,4-butanetriol and ethanol with complex and unpredictable patterns	10.1016/j.ymben.2012.07.009	1105		1-2-4-BUTANETRIOL	Escherichia coli	MG1655	ETHANOL,1-2-4-BUTANETRIOL,N-BUTANOL,ISOBUTANOL,2-BUTANOL	R,R,R,R,R	solvents_biofuels	B4142: overexpressed,B4142: plasmid expression,B4143: overexpressed,B4143: plasmid expression
-Toward a Semisynthetic Stress Response System To Engineer Microbial Solvent Tolerance	10.1128/ mBio.00308-12	1227		1-2-4-BUTANETRIOL	Escherichia coli	MG1655	ETHANOL,1-2-4-BUTANETRIOL,N-BUTANOL	R,R,R	solvents_biofuels	B2592: overexpressed,B2592: plasmid expression,B2614: overexpressed,B2614: plasmid expression,GROESL: overexpressed,GROESL: plasmid expression

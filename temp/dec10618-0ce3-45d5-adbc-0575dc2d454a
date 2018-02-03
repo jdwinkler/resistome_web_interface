@@ -1,7 +1,0 @@
-# Queried genes: 
-# Queried phenotypes: BACITRACIN (BACITRACIN)
-# Date of search: 2018-02-02 22:02
-title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
-Amplification of the bacA Gene Confers Bacitracin Resistance to Escherichia coli	0021-9193/93/123784-06$02.00/0-Amplification	1332	B3057,B3057	BACITRACIN	Escherichia coli	MG1655	BACITRACIN	R	antichemo	B3057: overexpressed,B3057: plasmid expression
-Resistance to Bacitracin as Modulated by an Escherichia coli Homologue of the Bacitracin ABC Transporter BcrC Subunit from Bacillus licheniformis	JOURNAL OF BACTERIOLOGY, Oct. 1999, p. 61766178	1368	BCRC	BACITRACIN	Escherichia coli	MG1655	BACITRACIN	S	antichemo	BCRC: (deleted)
-Resistance to Bacitracin as Modulated by an Escherichia coli Homologue of the Bacitracin ABC Transporter BcrC Subunit from Bacillus licheniformis	JOURNAL OF BACTERIOLOGY, Oct. 1999, p. 61766178	1369	BCRC,BCRC	BACITRACIN	Escherichia coli	MG1655	BACITRACIN	R	antichemo	BCRC: overexpressed,BCRC: plasmid expression

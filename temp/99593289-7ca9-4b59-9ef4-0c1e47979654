@@ -1,9 +1,0 @@
-# Queried genes: RPON (B3202),RPON (ECB_03067),RPON (ECW_M3474)
-# Queried phenotypes: 
-# Date of search: 2018-02-02 23:04
-title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
-Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1768	B3202		Escherichia coli	MG1655	GENTAMICIN	S	antichemo	B3202: (deleted)
-Directed Evolution of Ionizing Radiation Resistance in Escherichia coli	10.1128/JB.00502-09	1887	B3202		Escherichia coli	MG1655	IONIZING RADIATION	R	radiation	B3202: E348D
-Rapid profiling of a microbial genome using mixtures of barcoded oligonucleotides	10.1038/nbt.1653	4008	B3202		Escherichia coli	MG1655	L-VALINE,METHYLGLYOXAL	S,S	aa_antimetabolite,general_antimetabolite	B3202: integrated,B3202: overexpressed
-Rapid profiling of a microbial genome using mixtures of barcoded oligonucleotides	10.1038/nbt.1653	4629	B3202		Escherichia coli	MG1655	FUCOSE	S	general_growth	B3202: integrated,B3202: repressed
-Antibiotic Sensitivity Profiles Determined with an Escherichia coli Gene Knockout Collection: Generating an Antibiotic Bar Code	10.1128/AAC.00906-09	5666	B3202		Escherichia coli	MG1655	CEFOXITIN	S	antichemo	B3202: (deleted)

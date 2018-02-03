@@ -37,7 +37,7 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 			{% set is_list = isinstance(entry, list) %}
 			{% if i < len(mutant_genotype) - 1 %}
 				{% if is_list %}
-					<td style="border-bottom: 1pt solid black; margin: 10px 10px;">
+					<td style="border-bottom: 1pt solid black; margin: 10px 10px; ">
 					{% for z in entry %}
 						{{z}}<br>
 					{% end %}

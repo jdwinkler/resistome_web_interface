@@ -1,5 +1,0 @@
-# Queried genes: RPOE (ECW_M2802),RPOE (B2573),RPOE (ECB_02467)
-# Queried phenotypes: 
-# Date of search: 2018-02-02 23:04
-title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations
-Genes of Escherichia coli O157:H7 That Are Involved in High-Pressure Resistance	10.1128/AEM.72.4.2661-2671.2006	6527	B2573		Escherichia coli	MG1655	HIGH PRESSURE	R	high_gravity	B2573: (deleted)
