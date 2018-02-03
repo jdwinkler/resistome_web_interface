@@ -184,7 +184,7 @@ def main(heroku=True):
         STATIC_DIR = os.path.join(path, 'static')
         TEMPLATE_DIR = os.path.join(path, 'templates')
         MAIN_DIR = os.path.join(path, 'main')
-        TEMP_DIR = os.path.join(path, 'tmp')
+        TEMP_DIR = os.path.join('tmp')
         QUERY_DIR = os.path.join(path, 'search')
     else:
         STATIC_DIR = os.path.join(path, 'static')
