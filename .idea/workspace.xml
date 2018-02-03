@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d521350-3fce-4319-8845-b92b587f2c66" name="Default" comment="" />
+    <list default="true" id="3d521350-3fce-4319-8845-b92b587f2c66" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/,gitignore" afterPath="$PROJECT_DIR$/,gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database_query_handler.py" afterPath="$PROJECT_DIR$/database_query_handler.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,7 +16,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="webserver.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="webserver.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -22,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database_query_handler.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="database_query_handler.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database_query_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6851">
-              <caret line="415" column="41" lean-forward="false" selection-start-line="415" selection-start-column="41" selection-end-line="415" selection-end-column="41" />
+            <state relative-caret-position="493">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -49,8 +53,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database_query_handler.py" />
         <option value="$PROJECT_DIR$/webserver.py" />
+        <option value="$PROJECT_DIR$/database_query_handler.py" />
       </list>
     </option>
   </component>
@@ -235,7 +239,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="1598" height="860" extended-state="1" />
+    <frame x="1" y="0" width="1598" height="860" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24968395" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -266,21 +270,21 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database_query_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6851">
-          <caret line="415" column="41" lean-forward="false" selection-start-line="415" selection-start-column="41" selection-end-line="415" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="18" lean-forward="true" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_query_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

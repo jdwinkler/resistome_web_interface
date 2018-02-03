@@ -2,6 +2,7 @@ import psycopg2
 import psycopg2.extras
 import os
 from collections import defaultdict
+import urlparse
 
 
 class ResistomeDBHandler:
@@ -9,14 +10,24 @@ class ResistomeDBHandler:
     def __init__(self):
 
         try:
-            user_name = os.environ['user_name'.upper()]
-            password = os.environ['sql_password'.upper()]
+            urlparse.uses_netloc.append("postgres")
+            url = urlparse.urlparse(os.environ["DATABASE_URL"])
+
+            connection = psycopg2.connect(
+                database=url.path[1:],
+                user=url.username,
+                password=url.password,
+                host=url.hostname,
+                port=url.port
+            )
+
         except:
             user_name = 'james'
             password = 'winkler'
 
-        connection = psycopg2.connect(
-            "dbname='resistome' user='%s' host='localhost' password='%s'" % (user_name, password))
+            connection = psycopg2.connect(
+                "dbname='resistome' user='%s' host='localhost' password='%s'" % (user_name, password))
+
         connection.set_session(readonly=True)
         cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
