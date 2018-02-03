@@ -1,1 +1,1 @@
-resistome-web-interface: python webserver.py
+web: python webserver.py
