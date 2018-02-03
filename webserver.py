@@ -111,7 +111,7 @@ class QueryHandler(tornado.web.RequestHandler):
 
         file_name = str(uuid.uuid4())
 
-        fhandle = open(os.path.join(TEMP_DIR, file_name), 'w')
+        fhandle = open(os.path.join(TEMP_DIR, file_name), 'w+')
 
         fhandle.write('# Queried genes: %s' % ','.join(queried_gene_names) + '\n')
         fhandle.write('# Queried phenotypes: %s' % ','.join(queried_phenotype_names) + '\n')
