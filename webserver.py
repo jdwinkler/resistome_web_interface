@@ -159,7 +159,7 @@ class QueryHandler(tornado.web.RequestHandler):
                     temp_file_name = fname)
 
 
-def main():
+def main(heroku=True):
 
     global MAIN_DIR, QUERY_DIR, TEMP_DIR, phenotype_listing, resistome_handler
 
@@ -180,11 +180,18 @@ def main():
     current_location = os.path.realpath(__file__)
     path = os.path.split(current_location)[0]
 
-    STATIC_DIR = os.path.join(path, 'static')
-    TEMPLATE_DIR = os.path.join(path, 'templates')
-    MAIN_DIR = os.path.join(path, 'main')
-    TEMP_DIR = os.path.join(path, 'temp')
-    QUERY_DIR = os.path.join(path, 'search')
+    if heroku:
+        STATIC_DIR = os.path.join(path, 'static')
+        TEMPLATE_DIR = os.path.join(path, 'templates')
+        MAIN_DIR = os.path.join(path, 'main')
+        TEMP_DIR = os.path.join(path, 'temp')
+        QUERY_DIR = os.path.join(path, 'search')
+    else:
+        STATIC_DIR = os.path.join(path, 'static')
+        TEMPLATE_DIR = os.path.join(path, 'templates')
+        MAIN_DIR = os.path.join(path, 'main')
+        TEMP_DIR = os.path.join('app', path, 'temp')
+        QUERY_DIR = os.path.join(path, 'search')
 
     handlers = [
         (r"/", MainHandler),
@@ -202,5 +209,5 @@ def main():
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
-    main()
+    main(heroku=True)
 
