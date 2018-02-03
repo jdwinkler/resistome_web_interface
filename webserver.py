@@ -191,9 +191,10 @@ def main():
         (r"/temp/(.*)", FileHandler),
         (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': STATIC_DIR})]
 
-    application = tornado.web.Application(handlers, debug=True, template_path=TEMPLATE_DIR)
+    application = tornado.web.Application(handlers, debug=False, template_path=TEMPLATE_DIR)
 
-    application.listen(8080)
+    port = int(os.environ.get("PORT", 5000))
+    application.listen(port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
