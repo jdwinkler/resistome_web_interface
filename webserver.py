@@ -199,7 +199,7 @@ def main(heroku=True):
         (r"/temp/(.*)", FileHandler),
         (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': STATIC_DIR})]
 
-    application = tornado.web.Application(handlers, debug=False, template_path=TEMPLATE_DIR)
+    application = tornado.web.Application(handlers, debug=True, template_path=TEMPLATE_DIR)
 
     http_server = tornado.httpserver.HTTPServer(application)
 

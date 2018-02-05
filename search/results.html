@@ -8,9 +8,10 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 
 <body>
 
-<img src = "/static/resistome_logo.png" alt = "The Resistome Database" style="position: absolute; left: 33%">
-
-<div style="position: absolute; left: 12.5%; top: 68%; width: 1200px; text-align:justify">
+<div style="position: absolute; left: 12.5%; width: 1200px; text-align:justify">
+<p style="text-align: center">
+<img src = "/static/resistome_logo.png" alt = "The Resistome Database">
+</p>
 <p>Your query examined the following genes: {{ ', '.join(converted_gene_names)}}</p>
 <p>Your query examined the following phenotypes: {{ ', '.join(converted_phenotype_names)}}</p>
 <p>Input genes are automatically converted to known synonyms and accessions for <i>E. coli</i> B and W. Click <a href="/temp/{{temp_file_name}}">here</a> to download your results as a tab-delimited table.
@@ -37,7 +38,7 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 			{% set is_list = isinstance(entry, list) %}
 			{% if i < len(mutant_genotype) - 1 %}
 				{% if is_list %}
-					<td style="border-bottom: 1pt solid black; margin: 10px 10px; ">
+					<td style="border-bottom: 1pt solid black; margin: 10px 10px; white-space: nowrap;">
 					{% for z in entry %}
 						{{z}}<br>
 					{% end %}
