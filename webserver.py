@@ -209,5 +209,5 @@ def main(heroku=True):
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
-    main(heroku=True)
+    main(heroku=False)
 
