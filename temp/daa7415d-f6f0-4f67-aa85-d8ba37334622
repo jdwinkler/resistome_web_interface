@@ -1,5 +1,0 @@
-# Queried genes: 
-# Queried phenotypes: NITRITE (NITRITE)
-# Date of search: 2018-02-05 21:02
-title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations	expressions
-Peptide methionine sulfoxide reductase from Escherichia coli and Mycobacterium tuberculosis protects bacteria against oxidative damage from reactive nitrogen intermediates	10.1073/pnas.161295398	1481	N/A	NITRITE	Escherichia coli	MG1655	S-NITROSOGLUTATHIONE,H2O2,NITRITE	R,S,S	mutagens,other,oxidative	B4219: IS insertion Tn903	
