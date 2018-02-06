@@ -53,7 +53,7 @@ class ResistomeDBHandler:
 
         return sorted(list(output))
 
-    def get_mutant_output(self, gene_names, phenotype_names, specific_flag=False):
+    def get_mutant_output(self, gene_names, phenotype_names, specific_flag=False, ge_flag=False):
 
         """
         
@@ -100,12 +100,12 @@ class ResistomeDBHandler:
         pheno_names = [x[0] + ' (%s)' % x[1] for x in std_phenotype_names]
 
         gene_text_output = self.prep_gene_mutant_output(gene_mutant_dict,
-                                                        self.query_mutant_genotypes(gene_mutant_ids),
+                                                        self.query_mutant_genotypes(gene_mutant_ids, ge_flag=ge_flag),
                                                         only_affected_genes=specific_flag,
                                                         display_converter=gene_display_names)
 
         pheno_text_output = self.prep_pheno_mutant_output(pheno_mutant_dict,
-                                                        self.query_mutant_genotypes(pheno_mutant_ids),
+                                                        self.query_mutant_genotypes(pheno_mutant_ids, ge_flag=ge_flag),
                                                         only_affected_phenotypes=specific_flag,
                                                         display_converter=None)
 
@@ -113,27 +113,56 @@ class ResistomeDBHandler:
 
         return gene_names, pheno_names, gene_text_output
 
-    def query_mutant_genotypes(self, mutant_ids):
+    def query_mutant_genotypes(self, mutant_ids, ge_flag=False):
 
-        self.cursor.execute('select array_agg(distinct resistome.papers.title) as title, '
-                       'array_agg(distinct resistome.papers.doi) as doi,'
-                        'array_agg(resistome.phenotypes.phenotype) as phenotype,'
-                       'array_agg(distinct resistome.phenotypes.phenotype_class) as phenotype_class, '
-                       'array_agg(distinct resistome.phenotypes.ontology_root) as ontology_root, '
-                       'array_agg(resistome.phenotypes.phenotype_type) as phenotype_type, '
-                       'array_agg(resistome.mutations.name) as genes,'
-                       'array_agg(resistome.annotations.mutation_type) as mutation_type,'
-                       'array_agg(resistome.annotations.annotation) as annotation,'
-                       'array_agg(resistome.annotations.gene_id) as gene_ids,'
-                       'resistome.mutants.mutant_id, resistome.mutants.species, resistome.mutants.strain '
-                       'from resistome.mutants '
-                       'inner join resistome.papers on (resistome.papers.paper_id = resistome.mutants.paper_id) '
-                       'inner join resistome.mutations on (resistome.mutations.mutant_id = resistome.mutants.mutant_id) '
-                       'inner join resistome.annotations on (resistome.annotations.gene_id = resistome.mutations.gene_id) '
-                       'inner join resistome.phenotypes on (resistome.phenotypes.mutant_id = resistome.mutants.mutant_id) '
-                       'where resistome.mutants.mutant_id = ANY(%s) '
-                       'group by resistome.mutants.mutant_id ',
-                       (mutant_ids,))
+        if ge_flag:
+            self.cursor.execute('select array_agg(distinct resistome.papers.title) as title, '
+                                'array_agg(distinct resistome.papers.doi) as doi,'
+                                'array_agg(resistome.phenotypes.phenotype) as phenotype,'
+                                'array_agg(distinct resistome.phenotypes.phenotype_class) as phenotype_class, '
+                                'array_agg(distinct resistome.phenotypes.ontology_root) as ontology_root, '
+                                'array_agg(resistome.phenotypes.phenotype_type) as phenotype_type, '
+                                'array_agg(resistome.mutations.name) as genes,'
+                                'array_agg(resistome.annotations.mutation_type) as mutation_type,'
+                                'array_agg(resistome.annotations.annotation) as annotation,'
+                                'array_agg(resistome.annotations.gene_id) as gene_ids, '
+                                'array_agg(resistome.expressions.name) as de_genes, '
+                                'array_agg(resistome.expressions.fold_change) as fold_changes, '
+                                'array_agg(resistome.expressions.status) as status,'
+                                'resistome.mutants.mutant_id, '
+                                'resistome.mutants.species, '
+                                'resistome.mutants.strain '
+                                'from resistome.mutants '
+                                'inner join resistome.papers on (resistome.papers.paper_id = resistome.mutants.paper_id) '
+                                'inner join resistome.mutations on (resistome.mutations.mutant_id = resistome.mutants.mutant_id) '
+                                'inner join resistome.annotations on (resistome.annotations.gene_id = resistome.mutations.gene_id) '
+                                'inner join resistome.phenotypes on (resistome.phenotypes.mutant_id = resistome.mutants.mutant_id) '
+                                'left join resistome.expressions on (resistome.expressions.mutant_id = resistome.mutants.mutant_id) '
+                                'where resistome.mutants.mutant_id = ANY(%s) '
+                                'group by resistome.mutants.mutant_id ',
+                                (mutant_ids,))
+        else:
+            self.cursor.execute('select array_agg(distinct resistome.papers.title) as title, '
+                                'array_agg(distinct resistome.papers.doi) as doi,'
+                                'array_agg(resistome.phenotypes.phenotype) as phenotype,'
+                                'array_agg(distinct resistome.phenotypes.phenotype_class) as phenotype_class, '
+                                'array_agg(distinct resistome.phenotypes.ontology_root) as ontology_root, '
+                                'array_agg(resistome.phenotypes.phenotype_type) as phenotype_type, '
+                                'array_agg(resistome.mutations.name) as genes,'
+                                'array_agg(resistome.annotations.mutation_type) as mutation_type,'
+                                'array_agg(resistome.annotations.annotation) as annotation,'
+                                'array_agg(resistome.annotations.gene_id) as gene_ids, '
+                                'resistome.mutants.mutant_id, '
+                                'resistome.mutants.species, '
+                                'resistome.mutants.strain '
+                                'from resistome.mutants '
+                                'inner join resistome.papers on (resistome.papers.paper_id = resistome.mutants.paper_id) '
+                                'inner join resistome.mutations on (resistome.mutations.mutant_id = resistome.mutants.mutant_id) '
+                                'inner join resistome.annotations on (resistome.annotations.gene_id = resistome.mutations.gene_id) '
+                                'inner join resistome.phenotypes on (resistome.phenotypes.mutant_id = resistome.mutants.mutant_id) '
+                                'where resistome.mutants.mutant_id = ANY(%s) '
+                                'group by resistome.mutants.mutant_id ',
+                                (mutant_ids,))
 
         mutants = self.cursor.fetchall()
 
@@ -237,23 +266,22 @@ class ResistomeDBHandler:
             doi = record['doi'][0]
             phenotype = record['phenotype']
             phenotype_type = record['phenotype_type']
+            phenotypes_to_highlight = mutant_to_queried_phenotypes[record['mutant_id']]
 
             filter_phenotypes = set()
 
             for p, t in zip(phenotype, phenotype_type):
-                filter_phenotypes.add((p, t))
+
+                if only_affected_phenotypes and p not in phenotypes_to_highlight:
+                    pass
+                else:
+                    filter_phenotypes.add((p, t))
 
             filter_phenotypes = list(filter_phenotypes)
             phenotype = [x[0] for x in filter_phenotypes]
             phenotype_type = [x[1] for x in filter_phenotypes]
 
             root = record['phenotype_class']
-
-            phenotypes_to_highlight = mutant_to_queried_phenotypes[record['mutant_id']]
-
-            if only_affected_phenotypes and len(set(phenotype) ^ set(phenotypes_to_highlight)) > 0:
-                continue
-
             mutated_genes = record['genes']
             mutation_types = record['mutation_type']
             annotations = record['annotation']
@@ -270,7 +298,21 @@ class ResistomeDBHandler:
                 else:
                     gene_annotation_output.add(gene + ': ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
 
+            expression_gene_names = record.get('de_genes', [])
+            expression_fold_change = record.get('fold_changes', [])
+            directionality = record.get('status', [])
+
+            expression_annotation_output = set()
+
+            for gene, fold_change, status in zip(expression_gene_names, expression_fold_change, directionality):
+
+                if fold_change is not None:
+                    expression_annotation_output.add(gene + ' (%f)' % str(fold_change))
+                elif status is not None:
+                    expression_annotation_output.add(gene + ' (%s)' % status)
+
             gene_annotation_output = sorted(list(gene_annotation_output))
+            expression_annotation_output = sorted(list(expression_annotation_output))
 
             output_dict = {'title': title,
                            'doi': doi,
@@ -281,7 +323,8 @@ class ResistomeDBHandler:
                            'phenotype_types': phenotype_type,
                            'root': root,
                            'annotations': gene_annotation_output,
-                           'affected_genes' : [],
+                           'expressions': expression_annotation_output,
+                           'affected_genes' : ['N/A'],
                            'affected_phenotypes': affected_phenotypes}
 
             output_text_lines.append(output_dict)
@@ -338,7 +381,21 @@ class ResistomeDBHandler:
                 else:
                     gene_annotation_output.add(display_converter.get(gene, gene) + ': ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
 
+            expression_gene_names = record.get('de_genes', [])
+            expression_fold_change = record.get('fold_changes', [])
+            directionality = record.get('status', [])
+
+            expression_annotation_output = set()
+
+            for gene, fold_change, status in zip(expression_gene_names, expression_fold_change, directionality):
+
+                if fold_change is not None:
+                    expression_annotation_output.add(gene + ' (%f)' % fold_change)
+                elif status is not None:
+                    expression_annotation_output.add(gene + ' (%s)' % status)
+
             gene_annotation_output = sorted(list(gene_annotation_output))
+            expression_annotation_output = sorted(list(expression_annotation_output))
 
             output_dict = {'title': title,
                            'doi': doi,
@@ -349,8 +406,9 @@ class ResistomeDBHandler:
                            'phenotype_types': phenotype_type,
                            'root': root,
                            'annotations': gene_annotation_output,
+                           'expressions': expression_annotation_output,
                            'affected_genes' : affected_genes,
-                           'affected_phenotypes': []}
+                           'affected_phenotypes': ['N/A']}
 
             output_mutant_dicts.append(output_dict)
 

@@ -16,11 +16,8 @@ phenotype_listing = None
 
 display_order = ['doi',
                  'id',
-                 'affected_genes',
-                 'affected_phenotypes',
                  'phenotypes',
                  'phenotype_types',
-                 'root',
                  'annotations']
 
 serialize_order = ['title',
@@ -33,7 +30,8 @@ serialize_order = ['title',
                    'phenotypes',
                    'phenotype_types',
                    'root',
-                   'annotations']
+                   'annotations',
+                   'expressions']
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -131,6 +129,7 @@ class QueryHandler(tornado.web.RequestHandler):
 
         specific_flag = self.get_argument('specific', True)
         specific_flag = True if specific_flag == 'true' else False
+        ge_flag = True if self.get_argument('include_ge', None) is not None else False
 
         multi_gene_query = self.get_arguments('gene_list')
         multi_phenotype_query = self.get_arguments('phenotype_list')
@@ -145,18 +144,20 @@ class QueryHandler(tornado.web.RequestHandler):
 
         g_names, p_names, mutant_text_array = resistome_handler.get_mutant_output(multi_gene_query,
                                                                        multi_phenotype_query,
-                                                                       specific_flag=specific_flag)
+                                                                       specific_flag=specific_flag,
+                                                                                  ge_flag = ge_flag)
 
-        web_output = [self.mutant_dict_to_web_tuple(x) for x in mutant_text_array]
+        # web_output = [self.mutant_dict_to_web_tuple(x) for x in mutant_text_array]
         serialized_output = [self.mutant_dict_to_serialized_tuples(x) for x in mutant_text_array]
 
         fname = self.output_to_file(g_names, p_names, serialized_output)
 
         self.render(os.path.join(QUERY_DIR, 'results.html'),
-                    records=web_output,
+                    records=mutant_text_array,
                     converted_gene_names = g_names,
                     converted_phenotype_names = p_names,
-                    temp_file_name = fname)
+                    temp_file_name = fname,
+                    field_order = display_order)
 
 
 def main(heroku=True):

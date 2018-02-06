@@ -18,7 +18,8 @@ The Resistome Search Tool
 <form action="/query/" method="post" style="text-align:center">
   <textarea name="gene_list" rows="15" cols="50" required></textarea> <br>
   <input type="radio" name="specific" value="true" checked required> Return mutations for target gene(s) only<br>
-  <input type="radio" name="specific" value="false" required> Return full genotypes containing target gene(s)<br><br>
+  <input type="radio" name="specific" value="false" required> Return full genotypes containing target gene(s)<br>
+  <input type="checkbox" name="include_ge" value="true">Include gene expression data in file download? (slow!)<br><br>
   <input type="submit" value="Search">
 </form>
 

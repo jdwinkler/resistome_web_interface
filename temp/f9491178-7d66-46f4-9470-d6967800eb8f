@@ -1,0 +1,7 @@
+# Queried genes: 
+# Queried phenotypes: A22 (A22)
+# Date of search: 2018-02-05 21:08
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations	expressions
+Phenotypic Landscape of a Bacterial Cell	10.1016/j.cell.2010.11.052	7529	N/A	A22	Escherichia coli	MG1655	A22	R	antichemo	B0612: (deleted)	
+Phenotypic Landscape of a Bacterial Cell	10.1016/j.cell.2010.11.052	9380	N/A	A22	Escherichia coli	MG1655	A22	R	antichemo	B2380: (deleted)	
+Phenotypic Landscape of a Bacterial Cell	10.1016/j.cell.2010.11.052	9461	N/A	A22	Escherichia coli	MG1655	A22	S	antichemo	B1619: (deleted)	

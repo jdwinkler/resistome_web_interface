@@ -1,0 +1,8 @@
+# Queried genes: 
+# Queried phenotypes: LIMITED PHOSPHORUS (PHOSPHORUS LIMITATION)
+# Date of search: 2018-02-05 21:03
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations	expressions
+Divergence Involving Global Regulatory Gene Mutations in an Escherichia coli Population Evolving under Phosphate Limitation	10.1093/gbe/evq035	1042	N/A	PHOSPHORUS LIMITATION	Escherichia coli	MG1655	PHOSPHORUS LIMITATION	R	nutrient_limitation	B4172: Q51H	
+Divergence Involving Global Regulatory Gene Mutations in an Escherichia coli Population Evolving under Phosphate Limitation	10.1093/gbe/evq035	1043	N/A	PHOSPHORUS LIMITATION	Escherichia coli	MG1655	PHOSPHORUS LIMITATION	R	nutrient_limitation	B2741: N123S	
+Divergence Involving Global Regulatory Gene Mutations in an Escherichia coli Population Evolving under Phosphate Limitation	10.1093/gbe/evq035	1044	N/A	PHOSPHORUS LIMITATION	Escherichia coli	MG1655	PHOSPHORUS LIMITATION	R	nutrient_limitation	B3650: N458Y	
+Divergence Involving Global Regulatory Gene Mutations in an Escherichia coli Population Evolving under Phosphate Limitation	10.1093/gbe/evq035	1045	N/A	PHOSPHORUS LIMITATION	Escherichia coli	MG1655	PHOSPHORUS LIMITATION	R	nutrient_limitation	B2741: frameshift,B2741: indel 2750861|-1 bp|absolute	

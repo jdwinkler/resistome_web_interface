@@ -14,41 +14,44 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 </p>
 <p>Your query examined the following genes: {{ ', '.join(converted_gene_names)}}</p>
 <p>Your query examined the following phenotypes: {{ ', '.join(converted_phenotype_names)}}</p>
-<p>Input genes are automatically converted to known synonyms and accessions for <i>E. coli</i> B and W. Click <a href="/temp/{{temp_file_name}}">here</a> to download your results as a tab-delimited table.
+<p>Input genes are converted to accessions used in <i>E. coli</i> B, K, and W. Click <a href="/temp/{{temp_file_name}}">here</a> to download your results (including GE data if requested) as a tab-delimited table.
 <p>
 <table width = "100%" style="border: 1px solid black; text-align:center; border-collapse:collapse">
 <tr>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>DOI</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Mutant ID</b></td>
-	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>T_Gene(s)</b></td>
-	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>T_Phenotype(s)</b></td>
+	<!--<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>T_Gene(s)</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>T_Phenotype(s)</b></td>-->
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Selected Phenotype</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Type</b></td>
-	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Category</b></td>
+	<!--<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Category</b></td>-->
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Genotype</b></td>
 </tr>
 {% if len(records) == 0 %}
 	<tr><td style="border-bottom: 1pt solid black; text-align:center" colspan="8"><b>No results found!</b></td></tr>
 {% else %}
-
 	{% for mutant_genotype in records %}
 		<tr>
-		{% for i in range(0, len(mutant_genotype)) %}
-			{% set entry = mutant_genotype[i] %}
+		{% for key in field_order %}
+			{% set entry = mutant_genotype[key] %}
 			{% set is_list = isinstance(entry, list) %}
-			{% if i < len(mutant_genotype) - 1 %}
+			{% if key != 'annotations' and key != 'expressions' %}
 				{% if is_list %}
-					<td style="border-bottom: 1pt solid black; margin: 10px 10px; white-space: nowrap;">
+					<td style="border-bottom: 1pt solid black; margin: 10px 10px; text-align:center; white-space: nowrap;">
 					{% for z in entry %}
 						{{z}}<br>
 					{% end %}
 					</td>
 				{% else %}
-					<td width="10%" style="border-bottom: 1pt solid black;">{{entry}}</td>
+					{% if key == 'doi' %}
+						<td width="10%" style="border-bottom: 1pt solid black;"><a href=" http://dx.doi.org/{{entry}}">{{entry}}</a></td>
+					{% else %}
+						<td width="10%" style="border-bottom: 1pt solid black;">{{entry}}</td>
+					{% end %}
 				{% end %}
 			{% else %}
 				{% if is_list %}
-					<td width = "25%" style="border-bottom: 1pt solid black; text-align:left; margin: 10px 10px;">
+					<td width = "35%" style="border-bottom: 1pt solid black; text-align:left; margin: 10px 10px;">
 					{% for z in entry %}
 						{{z}}<br>
 					{% end %}

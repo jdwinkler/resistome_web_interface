@@ -1,0 +1,8 @@
+# Queried genes: 
+# Queried phenotypes: FLOR (FLORFENICOL)
+# Date of search: 2018-02-05 21:02
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations	expressions
+Antibiotic Susceptibility Profiles of Escherichia coli Strains Lacking Multidrug Efflux Pump Genes	10.1128/AAC.45.4.1126-1136.2001	6233	N/A	FLORFENICOL	Escherichia coli	MG1655	AMPICILLIN,METHOTREXATE,PUROMYCIN,FUSIDIC ACID,NOVOBIOCIN,NALIDIXIC ACID,CHLORAMPHENICOL,FLORFENICOL,ERYTHROMYCIN	S,R,S,S,S,S,S,S,S	antichemo	B0572: (deleted),B2138: (deleted),B3035: (deleted),B4080: (deleted)	
+Antibiotic Susceptibility Profiles of Escherichia coli Strains Lacking Multidrug Efflux Pump Genes	10.1128/AAC.45.4.1126-1136.2001	6234	N/A	FLORFENICOL	Escherichia coli	MG1655	AMPICILLIN,METHOTREXATE,PUROMYCIN,FUSIDIC ACID,NOVOBIOCIN,CLOTRIMAZOLE,CHLORAMPHENICOL,FLORFENICOL,ERYTHROMYCIN	S,R,S,S,S,R,S,S,S	antichemo	B0462: (deleted),B0463: (deleted),B2074: (deleted),B2075: (deleted),B2076: (deleted),B2470: (deleted),B3266: (deleted),B3513: (deleted),B3514: (deleted)	
+Antibiotic Susceptibility Profiles of Escherichia coli Strains Lacking Multidrug Efflux Pump Genes	10.1128/AAC.45.4.1126-1136.2001	6235	N/A	FLORFENICOL	Escherichia coli	MG1655	METHOTREXATE,PUROMYCIN,FUSIDIC ACID,NOVOBIOCIN,NALIDIXIC ACID,CHLORAMPHENICOL,FLORFENICOL,ERYTHROMYCIN	R,S,S,S,S,S,S,S	antichemo	B3035: (deleted)	
+Antibiotic Susceptibility Profiles of Escherichia coli Strains Lacking Multidrug Efflux Pump Genes	10.1128/AAC.45.4.1126-1136.2001	6236	N/A	FLORFENICOL	Escherichia coli	MG1655	AMPICILLIN,METHOTREXATE,FLORFENICOL,PUROMYCIN,FUSIDIC ACID,NOVOBIOCIN,CHLORAMPHENICOL,CLOTRIMAZOLE,ERYTHROMYCIN	S,R,S,S,S,S,S,R,S	antichemo	B0462: (deleted),B0463: (deleted)	
