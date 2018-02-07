@@ -296,7 +296,7 @@ class ResistomeDBHandler:
                 if 'large_' in m_type:
                     gene_annotation_output.add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
                 else:
-                    gene_annotation_output.add(gene + ': ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+                    gene_annotation_output.add(gene + ' ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
 
             expression_gene_names = record.get('de_genes', [])
             expression_fold_change = record.get('fold_changes', [])
@@ -379,7 +379,7 @@ class ResistomeDBHandler:
                 if 'large_' in m_type:
                     gene_annotation_output.add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
                 else:
-                    gene_annotation_output.add(display_converter.get(gene, gene) + ': ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+                    gene_annotation_output.add(display_converter.get(gene, gene) + ' ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
 
             expression_gene_names = record.get('de_genes', [])
             expression_fold_change = record.get('fold_changes', [])

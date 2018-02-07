@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d521350-3fce-4319-8845-b92b587f2c66" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver.py" afterPath="$PROJECT_DIR$/webserver.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database_query_handler.py" afterPath="$PROJECT_DIR$/database_query_handler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search/results.html" afterPath="$PROJECT_DIR$/search/results.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,8 +30,8 @@
       <file leaf-file-name="database_query_handler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database_query_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="931">
-              <caret line="283" column="44" lean-forward="false" selection-start-line="283" selection-start-column="44" selection-end-line="283" selection-end-column="44" />
+            <state relative-caret-position="1370">
+              <caret line="298" column="55" lean-forward="true" selection-start-line="298" selection-start-column="55" selection-end-line="298" selection-end-column="55" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -273,8 +274,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/database_query_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="931">
-          <caret line="283" column="44" lean-forward="false" selection-start-line="283" selection-start-column="44" selection-end-line="283" selection-end-column="44" />
+        <state relative-caret-position="1370">
+          <caret line="298" column="55" lean-forward="true" selection-start-line="298" selection-start-column="55" selection-end-line="298" selection-end-column="55" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

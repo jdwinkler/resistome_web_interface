@@ -53,7 +53,9 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 				{% if is_list %}
 					<td width = "35%" style="border-bottom: 1pt solid black; text-align:left; margin: 10px 10px;">
 					{% for z in entry %}
-						{{z}}<br>
+						{% set edited_gene = z[0:z.find(' ')] %}
+						{% set annotation = z[z.find(' ')+1:] %}
+						<b>{{edited_gene}}</b>: {{annotation}}<br>
 					{% end %}
 					</td>
 				{% else %}
