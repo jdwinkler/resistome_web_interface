@@ -63,10 +63,7 @@ class Vector:
 
         return len(self.feature_set.difference(v2.feature_set))
 
-    def distance(self, v2, method='euclidean'):
-
-        if method == 'euclidean':
-            return math.sqrt(self.difference(v2)) / float(len(self))
+    def distance(self, v2, method='similarity'):
 
         if method == 'similarity':
             return float(self.intersection(v2)) / float(len(self))
@@ -94,7 +91,7 @@ def build_proposed_vector(cursor, genes, type_of_feature):
 
     if type_of_feature == 'go':
 
-        cursor.execute('select go_term as go,'
+        cursor.execute('select go_term as go '
                        'from resistome.gene_ontology '
                        'where resistome.gene_ontology.accession = ANY(%s)', (genes,))
 
@@ -104,7 +101,7 @@ def build_proposed_vector(cursor, genes, type_of_feature):
 
     elif type_of_feature == 'metabolite':
 
-        cursor.execute('select metabolite as metabolite,'
+        cursor.execute('select metabolite as metabolite '
                        'from resistome.metabolomics '
                        'where resistome.metabolomics.accession = ANY(%s)', (genes,))
 
@@ -115,7 +112,7 @@ def build_proposed_vector(cursor, genes, type_of_feature):
     return Vector('test', [Feature(x, []) for x in features])
 
 
-def pairwise_distance_vector(proposed_vector, vector_set, method='euclidean'):
+def pairwise_distance_vector(proposed_vector, vector_set, method='similarity'):
 
     distances = []
 

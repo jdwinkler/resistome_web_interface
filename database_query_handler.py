@@ -70,7 +70,7 @@ class ResistomeDBHandler:
 
         query_vector = rs.build_proposed_vector(self.cursor, std_genes, feature_types)
 
-        pw_distances = sorted(rs.pairwise_distance_vector(query_vector, self.vector_db[feature_types][0]),
+        pw_distances = sorted(rs.pairwise_distance_vector(query_vector, self.vector_db[feature_types][0], method='jaccard'),
                               key=lambda x: x[1])
 
         min_mutants = 20

@@ -139,6 +139,7 @@ class QueryHandler(tornado.web.RequestHandler):
             feature_type = self.get_argument('ftype', 'gene')
 
             multi_gene_query = self.get_arguments('gene_list')
+            multi_gene_query = multi_gene_query[0].split('\n')
             multi_gene_query = [x.strip() for x in multi_gene_query]
 
             g_names, p_names, scores_dict, mutant_text_array = resistome_handler.find_similar_genotypes(multi_gene_query,
