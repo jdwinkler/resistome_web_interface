@@ -1,0 +1,7 @@
+# Queried genes: HOFB (ECB_00106),HOFB (ECW_M0104),HOFB (B0107)
+# Queried phenotypes: 
+# Date of search: 2018-02-08 00:11
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations	expressions
+Directed Evolution of Ionizing Radiation Resistance in Escherichia coli	10.1128/JB.00502-09	1882	B0107	N/A	Escherichia coli	MG1655	IONIZING RADIATION	R	radiation	B0107 SNP(s) G116384A	
+Directed Evolution of Ionizing Radiation Resistance in Escherichia coli	10.1128/JB.00502-09	1883	B0107	N/A	Escherichia coli	MG1655	IONIZING RADIATION	R	radiation	B0107 SNP(s) G116384A	
+Determinants of spontaneous mutation in the bacterium Escherichia coli as revealed by whole-genome sequencing	10.1073/pnas.1512136112	6322	B0107	N/A	Escherichia coli	MG1655	GROWTH	R	general_growth	B0107 SNP(s) G115989T	

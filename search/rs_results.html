@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<title>
+The Resistome: Compiled E. coli Resistance Phenotypes
+</title>
+</head>
+
+<body>
+
+<div style="margin: 0 auto; width: 1200px; text-align:justify">
+<p style="text-align: center">
+<img src = "/static/resistome_logo.png" alt = "The Resistome Database">
+</p>
+<p>Your query examined the following genotype: {{ ', '.join(converted_gene_names)}}</p>
+<p>Input genes are converted to accessions used in <i>E. coli</i> B, K, and W. Click <a href="/temp/{{temp_file_name}}">here</a> to download your results as a tab-delimited table.
+<p>
+<table width = "100%" style="border: 1px solid black; text-align:center; border-collapse:collapse">
+<tr>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>DOI</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Mutant ID</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Score</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Selected Phenotype</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Type</b></td>
+	<!--<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Category</b></td>-->
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Genotype</b></td>
+</tr>
+{% if len(records) == 0 %}
+	<tr><td style="border-bottom: 1pt solid black; text-align:center" colspan="8"><b>No results found!</b></td></tr>
+{% else %}
+	{% for mutant_genotype in records %}
+		<tr>
+		{% for key in field_order %}
+			{% set entry = mutant_genotype.get(key, None) %}
+			{% set is_list = isinstance(entry, list) %}
+			{% if key != 'annotations' and key != 'expressions' %}
+				{% if is_list %}
+					<td style="border-bottom: 1pt solid black; margin: 10px 10px; text-align:center; white-space: nowrap;">
+					{% for z in entry %}
+						{{z}}<br>
+					{% end %}
+					</td>
+				{% else %}
+					{% if key == 'doi' %}
+						<td width="20%" style="border-bottom: 1pt solid black;"><a href=" http://dx.doi.org/{{entry}}">{{entry}}</a></td>
+					{% elif key == 'score' %}
+						<td style="border-bottom: 1pt solid black;">{{scores[mutant_genotype['id']]}}</td>
+					{% else %}
+						<td width="10%" style="border-bottom: 1pt solid black;">{{entry}}</td>
+					{% end %}
+				{% end %}
+			{% else %}
+				{% if is_list %}
+					<td width = "30%" style="border-bottom: 1pt solid black; text-align:left; margin: 10px 10px;">
+					{% for z in entry %}
+						{% set edited_gene = z[0:z.find(' ')] %}
+						{% set annotation = z[z.find(' ')+1:] %}
+						<b>{{edited_gene}}</b>: {{annotation}}<br>
+					{% end %}
+					</td>
+				{% else %}
+					<td>{{entry}}</td>
+				{% end %}
+			{% end %}
+		{% end %}
+		</tr>
+	{% end %}
+{% end %}
+</table>
+</p>
+</div>
+
+</body>
+
+</html>

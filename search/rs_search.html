@@ -1,0 +1,35 @@
+<html>
+
+<head>
+<title>
+The Resistome Search Tool
+</title>
+</head>
+
+<body>
+
+<div style="margin: 0 auto; width: 600px; text-align:justify">
+<p style="text-align: center">
+<img src = "/static/resistome_logo.png" alt = "The Resistome Database">
+</p>
+<p><b>Search tips</b>: try to use the accession (bnumber, etc) for your gene of interest. All synonyms for your gene will be checked against the database.</p>
+<p><b>Search for a set of genes (one gene per line) mutated in your genotype of interest:</b><br>
+
+<form action="/query/" method="post" style="text-align:center">
+  <textarea name="gene_list" rows="15" cols="50" required></textarea> <br>
+  <input type="radio" name="ftype" value="gene" checked required>Use gene identifiers directly<br>
+  <input type="radio" name="ftype" value="go" required>Convert gene identifiers to gene ontology tags<br>
+  <input type="hidden" value="true" name="recommendation">
+  <input type="submit" value="Search">
+</form>
+
+</p>
+<p><b>Acknowledgements</b></p>
+<p>Questions, comments or suggestions about this website or the Resistome? Please contact <a href="mailto:james.winkler@gmail.com">James Winkler</a> for assistance.</p>
+
+</div>
+
+
+</body>
+
+</html>

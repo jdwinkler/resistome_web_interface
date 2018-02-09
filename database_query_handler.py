@@ -3,11 +3,15 @@ import psycopg2.extras
 import os
 from collections import defaultdict
 import urlparse
+import cPickle
+import recommendation_system as rs
+from recommendation_system import Vector, Feature
+from collections import defaultdict
 
 
 class ResistomeDBHandler:
 
-    def __init__(self):
+    def __init__(self, path_to_serialized_vectors):
 
         try:
             urlparse.uses_netloc.append("postgres")
@@ -25,14 +29,16 @@ class ResistomeDBHandler:
             user_name = 'james'
             password = 'winkler'
 
-            connection = psycopg2.connect(
-                "dbname='resistome' user='%s' host='localhost' password='%s'" % (user_name, password))
+            connection = psycopg2.connect("dbname='resistome' user='%s' host='localhost' password='%s'"
+                                          % (user_name, password))
 
         connection.set_session(readonly=True)
         cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
         self.connection = connection
         self.cursor = cursor
+
+        self.vector_db = cPickle.load(open(path_to_serialized_vectors, 'rU'))
 
     def __del__(self):
 
@@ -52,6 +58,42 @@ class ResistomeDBHandler:
             output.add(record['phenotype_type'])
 
         return sorted(list(output))
+
+    def find_similar_genotypes(self, gene_names, feature_types):
+
+        if feature_types != 'gene' and feature_types != 'go':
+            raise ValueError('Unknown feature type: %s' % feature_types)
+
+        std_gene_names, gene_display_names = self.standardize_input_phenotype_names(gene_names)
+
+        std_genes = [x[0] for x in std_gene_names]
+
+        query_vector = rs.build_proposed_vector(self.cursor, std_genes, feature_types)
+
+        pw_distances = sorted(rs.pairwise_distance_vector(query_vector, self.vector_db[feature_types][0]),
+                              key=lambda x: x[1])
+
+        min_mutants = 20
+        mutant_ids = []
+
+        scores_dict = dict()
+
+        for (m_id, score) in pw_distances:
+
+            # 10th percentile score check
+            if m_id <= self.vector_db[feature_types][1] or len(mutant_ids) < min_mutants:
+                mutant_ids.append(m_id)
+                scores_dict[m_id] = str(1 - score)
+
+        gene_text_output = self.prep_gene_mutant_output(defaultdict(list),
+                                                        self.query_mutant_genotypes(mutant_ids, ge_flag=False),
+                                                        only_affected_genes=False,
+                                                        display_converter=gene_display_names)
+
+        gene_names = [x[0] + ' (%s)' % x[1] for x in std_gene_names]
+        pheno_names = []
+
+        return gene_names, pheno_names, scores_dict, gene_text_output
 
     def get_mutant_output(self, gene_names, phenotype_names, specific_flag=False, ge_flag=False):
 

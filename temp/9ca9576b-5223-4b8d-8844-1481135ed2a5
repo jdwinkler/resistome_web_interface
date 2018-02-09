@@ -1,0 +1,11 @@
+# Queried genes: DNAK (ECB_00014),DNAK (B0014),DNAK (ECW_M0014)
+# Queried phenotypes: 
+# Date of search: 2018-02-08 00:03
+title	doi	id	affected_genes	affected_phenotypes	species	strain	phenotypes	phenotype_types	root	annotations	expressions
+Role of Global Regulators and Nucleotide Metabolism in Antibiotic Tolerance in Escherichia coli	10.1128/AAC.00144-08	1189	B0014	N/A	Escherichia coli	MG1655	OFLOXACIN	R	antichemo	B0014 (deleted)	
+Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1687	B0014	N/A	Escherichia coli	MG1655	RIFAMPICIN	S	antichemo	B0014 (deleted)	
+Determination of Antibiotic Hypersensitivity among 4,000 Single-Gene-Knockout Mutants of Escherichia coli	10.1128/JB.01982-07	1790	B0014	N/A	Escherichia coli	MG1655	SULFAMETHOXAZOLE	S	antichemo	B0014 (deleted)	
+Systems based mapping demonstrates that recovery from alkylation damage requires DNA repair, RNA processing, and translation associated networks	10.1016/j.ygeno.2008.09.001	2118	B0014	N/A	Escherichia coli	MG1655	METHYL METHANESULFONATE	S	mutagens	B0014 (deleted)	
+Antibiotic Sensitivity Profiles Determined with an Escherichia coli Gene Knockout Collection: Generating an Antibiotic Bar Code	10.1128/AAC.00906-09	5650	B0014	N/A	Escherichia coli	MG1655	VANCOMYCIN,FUSIDIC ACID,CIPROFLOXACIN	S,S,S	antichemo	B0014 (deleted)	
+Single-Gene Deletion Mutants of Escherichia coli with Altered Sensitivity to Bicyclomycin, an Inhibitor of Transcription Termination Factor Rho	10.1128/JB.01463-10	5882	B0014	N/A	Escherichia coli	MG1655	BICYCLOMYCIN	S	antichemo	B0014 (deleted)	
+Genome-Wide Enrichment Screening Reveals Multiple Targets and Resistance Genes for Triclosan in Escherichia coli	10.1007/s12275-012-2439-0	6181	B0014	N/A	Escherichia coli	MG1655	TRICLOSAN	R	antichemo	B0014 overexpressed,B0014 plasmid expression	
