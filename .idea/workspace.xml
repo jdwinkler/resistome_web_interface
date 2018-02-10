@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d521350-3fce-4319-8845-b92b587f2c66" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database_query_handler.py" afterPath="$PROJECT_DIR$/database_query_handler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/recommendation_system.py" afterPath="$PROJECT_DIR$/recommendation_system.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search/rs_results.html" afterPath="$PROJECT_DIR$/search/rs_results.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver.py" afterPath="$PROJECT_DIR$/webserver.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +17,8 @@
       <file leaf-file-name="webserver.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="155" column="41" lean-forward="true" selection-start-line="155" selection-start-column="41" selection-end-line="155" selection-end-column="41" />
+            <state relative-caret-position="364">
+              <caret line="249" column="20" lean-forward="false" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
               <folding>
                 <element signature="e#30#51#0" expanded="true" />
               </folding>
@@ -32,8 +29,8 @@
       <file leaf-file-name="recommendation_system.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recommendation_system.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+            <state relative-caret-position="1853">
+              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -68,9 +65,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webserver.py" />
         <option value="$PROJECT_DIR$/recommendation_system.py" />
         <option value="$PROJECT_DIR$/database_query_handler.py" />
+        <option value="$PROJECT_DIR$/webserver.py" />
       </list>
     </option>
   </component>
@@ -295,8 +292,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/recommendation_system.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state relative-caret-position="1853">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
@@ -305,8 +302,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="155" column="41" lean-forward="true" selection-start-line="155" selection-start-column="41" selection-end-line="155" selection-end-column="41" />
+        <state relative-caret-position="364">
+          <caret line="249" column="20" lean-forward="false" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
           <folding>
             <element signature="e#30#51#0" expanded="true" />
           </folding>
