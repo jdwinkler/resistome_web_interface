@@ -1,11 +1,9 @@
 import psycopg2
 import psycopg2.extras
 import os
-from collections import defaultdict
 import urlparse
 import cPickle
 import recommendation_system as rs
-from recommendation_system import Vector, Feature
 from collections import defaultdict
 
 
@@ -64,11 +62,11 @@ class ResistomeDBHandler:
         if feature_types != 'gene' and feature_types != 'go':
             raise ValueError('Unknown feature type: %s' % feature_types)
 
-        std_gene_names, gene_display_names = self.standardize_input_phenotype_names(gene_names)
+        std_gene_names, gene_display_names = self.standardize_input_gene_names(gene_names)
 
-        std_genes = [x[0] for x in std_gene_names]
+        std_genes = [x[1] for x in std_gene_names]
 
-        query_vector = rs.build_proposed_vector(self.cursor, std_genes, feature_types)
+        query_vector, query_features = rs.build_proposed_vector(self.cursor, std_genes, feature_types)
 
         pw_distances = sorted(rs.pairwise_distance_vector(query_vector, self.vector_db[feature_types][0], method='jaccard'),
                               key=lambda x: x[1])
@@ -83,17 +81,25 @@ class ResistomeDBHandler:
             # 10th percentile score check
             if m_id <= self.vector_db[feature_types][1] or len(mutant_ids) < min_mutants:
                 mutant_ids.append(m_id)
-                scores_dict[m_id] = str(1 - score)
+                scores_dict[m_id] = '%0.3f' % (1.0 - score)
 
         gene_text_output = self.prep_gene_mutant_output(defaultdict(list),
                                                         self.query_mutant_genotypes(mutant_ids, ge_flag=False),
                                                         only_affected_genes=False,
                                                         display_converter=gene_display_names)
 
-        gene_names = [x[0] + ' (%s)' % x[1] for x in std_gene_names]
-        pheno_names = []
+        sorted_text_output = []
 
-        return gene_names, pheno_names, scores_dict, gene_text_output
+        for m_dict in gene_text_output:
+
+            sorted_text_output.append((scores_dict[m_dict['id']], m_dict))
+
+        sorted_text_output = sorted(sorted_text_output, key=lambda x: x[0], reverse=True)
+        sorted_text_output = [x[1] for x in sorted_text_output]
+
+        gene_names = [x[0] + ' (%s)' % x[1] for x in std_gene_names]
+
+        return gene_names, query_features, scores_dict, sorted_text_output
 
     def get_mutant_output(self, gene_names, phenotype_names, specific_flag=False, ge_flag=False):
 

@@ -86,7 +86,6 @@ class Vector:
 def build_proposed_vector(cursor, genes, type_of_feature):
 
     # assumes genes is already standardized
-
     features = genes
 
     if type_of_feature == 'go':
@@ -109,7 +108,7 @@ def build_proposed_vector(cursor, genes, type_of_feature):
         for record in cursor:
             features.append(record['metabolite'])
 
-    return Vector('test', [Feature(x, []) for x in features])
+    return Vector('test', [Feature(x, []) for x in features]), features
 
 
 def pairwise_distance_vector(proposed_vector, vector_set, method='similarity'):

@@ -142,12 +142,12 @@ class QueryHandler(tornado.web.RequestHandler):
             multi_gene_query = multi_gene_query[0].split('\n')
             multi_gene_query = [x.strip() for x in multi_gene_query]
 
-            g_names, p_names, scores_dict, mutant_text_array = resistome_handler.find_similar_genotypes(multi_gene_query,
+            g_names, query_names, scores_dict, mutant_text_array = resistome_handler.find_similar_genotypes(multi_gene_query,
                                                                                                         feature_type)
 
             serialized_output = [self.mutant_dict_to_serialized_tuples(x) for x in mutant_text_array]
 
-            fname = self.output_to_file(g_names, p_names, serialized_output)
+            fname = self.output_to_file(g_names, query_names, serialized_output)
 
             rs_display_order = ['doi',
                              'id',
@@ -159,6 +159,7 @@ class QueryHandler(tornado.web.RequestHandler):
             self.render(os.path.join(QUERY_DIR, 'rs_results.html'),
                         records=mutant_text_array,
                         converted_gene_names=g_names,
+                        converted_feature_names=query_names,
                         scores=scores_dict,
                         temp_file_name=fname,
                         field_order=rs_display_order)
