@@ -198,25 +198,18 @@ class QueryHandler(tornado.web.RequestHandler):
                         field_order=display_order)
 
 
-def main(heroku=True):
+def main():
 
     global MAIN_DIR, QUERY_DIR, TEMP_DIR, phenotype_listing, resistome_handler
 
     current_location = os.path.realpath(__file__)
     path = os.path.split(current_location)[0]
 
-    if heroku:
-        STATIC_DIR = os.path.join(path, 'static')
-        TEMPLATE_DIR = os.path.join(path, 'templates')
-        MAIN_DIR = os.path.join(path, 'main')
-        TEMP_DIR = os.path.join(os.sep, 'tmp')
-        QUERY_DIR = os.path.join(path, 'search')
-    else:
-        STATIC_DIR = os.path.join(path, 'static')
-        TEMPLATE_DIR = os.path.join(path, 'templates')
-        MAIN_DIR = os.path.join(path, 'main')
-        TEMP_DIR = os.path.join(path, 'temp')
-        QUERY_DIR = os.path.join(path, 'search')
+    STATIC_DIR = os.path.join(path, 'static')
+    TEMPLATE_DIR = os.path.join(path, 'templates')
+    MAIN_DIR = os.path.join(path, 'main')
+    TEMP_DIR = os.path.join(os.sep, 'tmp')
+    QUERY_DIR = os.path.join(path, 'search')
 
     resistome_handler = ResistomeDBHandler(os.path.join(STATIC_DIR, 'Serialized Vector Sets.obj'))
     phenotype_listing = resistome_handler.get_phenotype_listing()
@@ -247,5 +240,5 @@ def main(heroku=True):
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
-    main(heroku=True)
+    main()
 

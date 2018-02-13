@@ -71,7 +71,7 @@ class ResistomeDBHandler:
         pw_distances = sorted(rs.pairwise_distance_vector(query_vector, self.vector_db[feature_types][0], method='jaccard'),
                               key=lambda x: x[1])
 
-        min_mutants = 20
+        min_mutants = 25
         mutant_ids = []
 
         scores_dict = dict()
