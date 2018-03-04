@@ -14,11 +14,15 @@ TEMP_DIR = ''
 resistome_handler = None
 phenotype_listing = None
 
+# display order for web tables
+
 display_order = ['doi',
                  'id',
                  'phenotypes',
                  'phenotype_types',
                  'annotations']
+
+# column order for dicts representing output genotypes in downloadable tables
 
 serialize_order = ['title',
                    'doi',
@@ -33,12 +37,28 @@ serialize_order = ['title',
                    'annotations',
                    'expressions']
 
+
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
+
+        """
+        
+        Main page rendering.
+        
+        :return: 
+        """
 
         self.render(os.path.join(MAIN_DIR, 'main.html'))
 
     def post(self):
+
+        """
+        
+        Renders a search page based the value provided in the 'search' parameter when post request is received.
+        If the value is missing or does not fall under the categories below, the main page is rendered.
+        
+        :return: 
+        """
 
         query_type = self.get_argument('search', default=None)
 
@@ -56,12 +76,20 @@ class MainHandler(tornado.web.RequestHandler):
 
         else:
 
-            pass
+            self.render(os.path.join(MAIN_DIR, 'main.html'))
 
 
 class FileHandler(tornado.web.RequestHandler):
 
     def get(self, fname):
+
+        """
+        
+        Serves up temporary files representing data requested during searches.
+        
+        :param fname: 
+        :return: 
+        """
 
         file_name = os.path.join(TEMP_DIR, fname)
 
@@ -208,7 +236,7 @@ def main():
     STATIC_DIR = os.path.join(path, 'static')
     TEMPLATE_DIR = os.path.join(path, 'templates')
     MAIN_DIR = os.path.join(path, 'main')
-    TEMP_DIR = os.path.join(os.sep, 'tmp')
+    TEMP_DIR = os.path.join(path, 'tmp')
     QUERY_DIR = os.path.join(path, 'search')
 
     resistome_handler = ResistomeDBHandler(os.path.join(STATIC_DIR, 'Serialized Vector Sets.obj'))

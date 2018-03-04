@@ -1,6 +1,5 @@
 import itertools
 import math
-import os
 
 
 class Feature(object):
@@ -13,7 +12,7 @@ class Feature(object):
 
     def __eq__(self, other):
 
-        if (not isinstance(other, Feature)):
+        if not isinstance(other, Feature):
             return False
         else:
             return self.name == other.name and self.details == other.details

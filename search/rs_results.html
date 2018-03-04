@@ -12,15 +12,25 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 <p style="text-align: center">
 <img src = "/static/resistome_logo.png" alt = "The Resistome Database">
 </p>
+<p>
+<form action="/" method="post" style="text-align:center">
+Go to:
+  <input type="submit" value="Gene Search" name="search">
+  <input type="submit" value="Phenotype Search" name="search">
+  <input type="submit" value="Genotype Search" name="search">
+  <input type="submit" value="Main Page" name="search">
+</form>
+</p>
+<p>The similarity between your queried genotype and Resistome entries was computed; the 20 most similar genotypes are displayed here.</p>
 <p>Your query examined the following genotype: {{ ', '.join(converted_gene_names)}}</p>
-<p>Your query was converted into the following query features: {{ ', '.join(converted_feature_names)}}</p>
+<p>Your query was converted into the following query features: {{ ', '.join(set(converted_feature_names))}}</p>
 <p>Input genes are converted to accessions used in <i>E. coli</i> B, K, and W. Click <a href="/temp/{{temp_file_name}}">here</a> to download your results as a tab-delimited table.
 <p>
 <table width = "100%" style="border: 1px solid black; text-align:center; border-collapse:collapse">
 <tr>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>DOI</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Mutant ID</b></td>
-	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Score</b></td>
+	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Similarity Score</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Selected Phenotype</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Type</b></td>
 	<!--<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Category</b></td>-->

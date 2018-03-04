@@ -68,7 +68,9 @@ class ResistomeDBHandler:
 
         query_vector, query_features = rs.build_proposed_vector(self.cursor, std_genes, feature_types)
 
-        pw_distances = sorted(rs.pairwise_distance_vector(query_vector, self.vector_db[feature_types][0], method='jaccard'),
+        pw_distances = sorted(rs.pairwise_distance_vector(query_vector,
+                                                          self.vector_db[feature_types],
+                                                          method='jaccard'),
                               key=lambda x: x[1])
 
         min_mutants = 25
@@ -78,7 +80,7 @@ class ResistomeDBHandler:
 
         for (m_id, score) in pw_distances:
 
-            # 10th percentile score check
+            # pull mutant ids if minimum count hasn't been met yet
             if m_id <= self.vector_db[feature_types][1] or len(mutant_ids) < min_mutants:
                 mutant_ids.append(m_id)
                 scores_dict[m_id] = '%0.3f' % (1.0 - score)
@@ -314,6 +316,9 @@ class ResistomeDBHandler:
             doi = record['doi'][0]
             phenotype = record['phenotype']
             phenotype_type = record['phenotype_type']
+
+            phenotype_type = ['Sensitive' if x == 'S' else 'Resistant' for x in phenotype_type]
+
             phenotypes_to_highlight = mutant_to_queried_phenotypes[record['mutant_id']]
 
             filter_phenotypes = set()
@@ -397,6 +402,8 @@ class ResistomeDBHandler:
             phenotype = record['phenotype']
             phenotype_type = record['phenotype_type']
 
+            phenotype_type = ['Sensitive' if x == 'S' else 'Resistant' for x in phenotype_type]
+
             filter_phenotypes = set()
 
             for p, t in zip(phenotype, phenotype_type):
@@ -427,7 +434,8 @@ class ResistomeDBHandler:
                 if 'large_' in m_type:
                     gene_annotation_output.add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
                 else:
-                    gene_annotation_output.add(display_converter.get(gene, gene) + ' ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+                    gene_annotation_output.add(display_converter.get(gene, gene) + ' ' +
+                                               ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
 
             expression_gene_names = record.get('de_genes', [])
             expression_fold_change = record.get('fold_changes', [])
@@ -465,13 +473,15 @@ class ResistomeDBHandler:
     @staticmethod
     def standard_mutation_formatting(mutation_type, annotation):
 
-        '''
-
+        """
+        
+        Generates a 'visually pleasing' version of internal Resistome mutation data depending on the mutation type
+        and annotation data available.
+        
         :param mutation_type: 
         :param annotation: 
         :return: 
-
-        '''
+        """
 
         if mutation_type == 'aa_snps':
             str_output = []

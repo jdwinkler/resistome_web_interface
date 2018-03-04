@@ -12,6 +12,15 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 <p style="text-align: center">
 <img src = "/static/resistome_logo.png" alt = "The Resistome Database">
 </p>
+<p>
+<form action="/" method="post" style="text-align:center">
+Go to:
+  <input type="submit" value="Gene Search" name="search">
+  <input type="submit" value="Phenotype Search" name="search">
+  <input type="submit" value="Genotype Search" name="search">
+  <input type="submit" value="Main Page" name="search">
+</form>
+</p>
 <p>Your query examined the following genes: {{ ', '.join(converted_gene_names)}}</p>
 <p>Your query examined the following phenotypes: {{ ', '.join(converted_phenotype_names)}}</p>
 <p>Input genes are converted to accessions used in <i>E. coli</i> B, K, and W. Click <a href="/temp/{{temp_file_name}}">here</a> to download your results (including GE data if requested) as a tab-delimited table.
@@ -20,11 +29,8 @@ The Resistome: Compiled E. coli Resistance Phenotypes
 <tr>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>DOI</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Mutant ID</b></td>
-	<!--<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>T_Gene(s)</b></td>
-	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>T_Phenotype(s)</b></td>-->
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Selected Phenotype</b></td>
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Type</b></td>
-	<!--<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Category</b></td>-->
 	<td style="border-bottom: 2pt solid black; border-top: 2pt solid black"><b>Genotype</b></td>
 </tr>
 {% if len(records) == 0 %}
