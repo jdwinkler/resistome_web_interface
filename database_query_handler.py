@@ -541,4 +541,3 @@ class ResistomeDBHandler:
             return '(engineered RBS)'
         else:
             return '(%s)' % mutation_type
-

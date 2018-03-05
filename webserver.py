@@ -48,7 +48,10 @@ class MainHandler(tornado.web.RequestHandler):
         :return: 
         """
 
-        self.render(os.path.join(MAIN_DIR, 'main.html'))
+        if 'summary' in self.request.uri:
+            self.render(os.path.join(MAIN_DIR, 'summary.html'))
+        else:
+            self.render(os.path.join(MAIN_DIR, 'main.html'))
 
     def post(self):
 
@@ -254,6 +257,7 @@ def main():
 
     handlers = [
         (r"/", MainHandler),
+        (r"/summary", MainHandler),
         (r"/query/", QueryHandler),
         (r"/temp/(.*)", FileHandler),
         (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': STATIC_DIR})]
