@@ -71,7 +71,7 @@ class MainHandler(tornado.web.RequestHandler):
 
         elif 'Phenotype' in query_type:
 
-            self.render(os.path.join(QUERY_DIR, 'phenotype_search.html'), phenotype_list = phenotype_listing)
+            self.render(os.path.join(QUERY_DIR, 'phenotype_search.html'), phenotype_list=phenotype_listing)
 
         elif 'Genotype' in query_type:
 
@@ -83,7 +83,6 @@ class MainHandler(tornado.web.RequestHandler):
 
 
 class FileHandler(tornado.web.RequestHandler):
-
     def get(self, fname):
 
         """
@@ -108,7 +107,6 @@ class FileHandler(tornado.web.RequestHandler):
 
 
 class QueryHandler(tornado.web.RequestHandler):
-
     def mutant_dict_to_web_tuple(self, mutant_dict):
 
         output = []
@@ -153,7 +151,6 @@ class QueryHandler(tornado.web.RequestHandler):
         fhandle.write('\t'.join(serialize_order) + '\n')
 
         for x in mutant_text_data:
-
             fhandle.write('\t'.join(x) + '\n')
 
         fhandle.close()
@@ -173,19 +170,20 @@ class QueryHandler(tornado.web.RequestHandler):
             multi_gene_query = multi_gene_query[0].split('\n')
             multi_gene_query = [x.strip() for x in multi_gene_query]
 
-            g_names, query_names, scores_dict, mutant_text_array = resistome_handler.find_similar_genotypes(multi_gene_query,
-                                                                                                        feature_type)
+            g_names, query_names, scores_dict, mutant_text_array = resistome_handler.find_similar_genotypes(
+                multi_gene_query,
+                feature_type)
 
             serialized_output = [self.mutant_dict_to_serialized_tuples(x) for x in mutant_text_array]
 
             fname = self.output_to_file(g_names, query_names, serialized_output)
 
             rs_display_order = ['doi',
-                             'id',
-                             'score',
-                             'phenotypes',
-                             'phenotype_types',
-                             'annotations']
+                                'id',
+                                'score',
+                                'phenotypes',
+                                'phenotype_types',
+                                'annotations']
 
             self.render(os.path.join(QUERY_DIR, 'rs_results.html'),
                         records=mutant_text_array,
@@ -213,9 +211,9 @@ class QueryHandler(tornado.web.RequestHandler):
                 multi_phenotype_query = [x.strip() for x in multi_phenotype_query]
 
             g_names, p_names, mutant_text_array = resistome_handler.get_mutant_output(multi_gene_query,
-                                                                           multi_phenotype_query,
-                                                                           specific_flag=specific_flag,
-                                                                                      ge_flag = ge_flag)
+                                                                                      multi_phenotype_query,
+                                                                                      specific_flag=specific_flag,
+                                                                                      ge_flag=ge_flag)
 
             serialized_output = [self.mutant_dict_to_serialized_tuples(x) for x in mutant_text_array]
 
@@ -230,7 +228,6 @@ class QueryHandler(tornado.web.RequestHandler):
 
 
 def main():
-
     global MAIN_DIR, QUERY_DIR, TEMP_DIR, phenotype_listing, resistome_handler
 
     current_location = os.path.realpath(__file__)
@@ -271,6 +268,6 @@ def main():
     http_server.start()
     tornado.ioloop.IOLoop.instance().start()
 
+
 if __name__ == "__main__":
     main()
-

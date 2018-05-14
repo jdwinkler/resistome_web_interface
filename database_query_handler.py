@@ -12,6 +12,7 @@ class ResistomeDBHandler:
     def __init__(self, path_to_serialized_vectors):
 
         try:
+            # heroku hosted version
             urlparse.uses_netloc.append("postgres")
             url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
@@ -24,18 +25,21 @@ class ResistomeDBHandler:
             )
 
         except:
+            # local version of the database
             user_name = 'james'
             password = 'winkler'
 
             connection = psycopg2.connect("dbname='resistome' user='%s' host='localhost' password='%s'"
                                           % (user_name, password))
 
+        # remove possibility of a query editing data
         connection.set_session(readonly=True)
         cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
         self.connection = connection
         self.cursor = cursor
 
+        # load data used for recommendation system
         self.vector_db = cPickle.load(open(path_to_serialized_vectors, 'rU'))
 
     def __del__(self):
@@ -93,7 +97,6 @@ class ResistomeDBHandler:
         sorted_text_output = []
 
         for m_dict in gene_text_output:
-
             sorted_text_output.append((scores_dict[m_dict['id']], m_dict))
 
         sorted_text_output = sorted(sorted_text_output, key=lambda x: x[0], reverse=True)
@@ -107,8 +110,12 @@ class ResistomeDBHandler:
 
         """
         
+        Extract mutant output related to gene names, phenotype names.
+        
         :param gene_names: 
+        :param phenotype_names
         :param specific_flag: 
+        :param ge_flag
         :return: 
         """
 
@@ -300,7 +307,8 @@ class ResistomeDBHandler:
         return output, display_name
 
     @staticmethod
-    def prep_pheno_mutant_output(mutant_to_queried_phenotypes, records, only_affected_phenotypes=False, display_converter=None):
+    def prep_pheno_mutant_output(mutant_to_queried_phenotypes, records, only_affected_phenotypes=False,
+                                 display_converter=None):
 
         output_text_lines = []
 
@@ -349,7 +357,8 @@ class ResistomeDBHandler:
                 if 'large_' in m_type:
                     gene_annotation_output.add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
                 else:
-                    gene_annotation_output.add(gene + ' ' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+                    gene_annotation_output.add(gene + ' ' + ResistomeDBHandler.standard_mutation_formatting(m_type,
+                                                                                                            annotation))
 
             expression_gene_names = record.get('de_genes', [])
             expression_fold_change = record.get('fold_changes', [])
