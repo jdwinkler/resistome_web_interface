@@ -1,5 +1,3 @@
-# todo: add tornado skeleton
-
 import tornado.ioloop
 import tornado.web
 import tornado.httpserver
