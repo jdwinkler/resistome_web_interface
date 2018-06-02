@@ -56,7 +56,7 @@ class ResistomeDBHandler:
 
         for record in self.cursor:
 
-            output.add(record['standard_name'])
+            output.add(record['standard_name'].upper())
             output.add(record['phenotype_type'])
 
         return sorted(list(output))
@@ -87,7 +87,7 @@ class ResistomeDBHandler:
             # pull mutant ids if minimum count hasn't been met yet
             if m_id <= self.vector_db[feature_types][1] or len(mutant_ids) < min_mutants:
                 mutant_ids.append(m_id)
-                scores_dict[m_id] = '%0.3f' % (1.0 - score)
+                scores_dict[m_id] = '%0.3f' % ((1.0 - score)*3)
 
         gene_text_output = self.prep_gene_mutant_output(defaultdict(list),
                                                         self.query_mutant_genotypes(mutant_ids, ge_flag=False),
@@ -126,7 +126,7 @@ class ResistomeDBHandler:
         std_phenotype_names, _ = self.standardize_input_phenotype_names(phenotype_names)
 
         query_genes = [x[1] for x in std_gene_names]
-        query_phenotypes = [x[1] for x in std_phenotype_names]
+        query_phenotypes = [x[1].upper() for x in std_phenotype_names]
 
         # get mutant id, name pairs for provided gene list
         self.cursor.execute('select resistome.mutations.mutant_id,'
@@ -144,7 +144,7 @@ class ResistomeDBHandler:
                             'resistome.phenotypes.phenotype '
                             'from resistome.mutants '
                             'inner join resistome.phenotypes on (resistome.mutants.mutant_id = resistome.phenotypes.mutant_id)'
-                            'where resistome.phenotypes.phenotype = ANY(%s) ', (query_phenotypes,))
+                            'where UPPER(resistome.phenotypes.phenotype) = ANY(%s) ', (query_phenotypes,))
 
         pheno_results = self.cursor.fetchall()
         pheno_mutant_ids = []
@@ -153,8 +153,8 @@ class ResistomeDBHandler:
             pheno_mutant_ids.append(result['mutant_id'])
             pheno_mutant_dict[result['mutant_id']].add(result['phenotype'])
 
-        gene_names = [x[0] + ' (%s)' % x[1] for x in std_gene_names]
-        pheno_names = [x[0] + ' (%s)' % x[1] for x in std_phenotype_names]
+        gene_names = [x[0].upper() + ' (%s)' % x[1].upper() for x in std_gene_names]
+        pheno_names = [x[0].upper() + ' (%s)' % x[1].upper() for x in std_phenotype_names]
 
         gene_text_output = self.prep_gene_mutant_output(gene_mutant_dict,
                                                         self.query_mutant_genotypes(gene_mutant_ids, ge_flag=ge_flag),
@@ -336,7 +336,7 @@ class ResistomeDBHandler:
                 if only_affected_phenotypes and p not in phenotypes_to_highlight:
                     pass
                 else:
-                    filter_phenotypes.add((p, t))
+                    filter_phenotypes.add((p.upper(), t.upper()))
 
             filter_phenotypes = list(filter_phenotypes)
             phenotype = [x[0] for x in filter_phenotypes]
@@ -416,7 +416,7 @@ class ResistomeDBHandler:
             filter_phenotypes = set()
 
             for p, t in zip(phenotype, phenotype_type):
-                filter_phenotypes.add((p, t))
+                filter_phenotypes.add((p.upper(), t.upper()))
 
             filter_phenotypes = list(filter_phenotypes)
             phenotype = [x[0] for x in filter_phenotypes]
@@ -522,9 +522,15 @@ class ResistomeDBHandler:
         elif mutation_type == 'amplified':
             return '(amplified %iX)' % annotation['amplified']
         elif mutation_type == 'duplication':
-            prefix = '+' if annotation['duplication'][1] > 0 else '-'
-            return annotation['duplication'][0] + '|' + prefix + str(annotation['duplication'][1]) + ' bp|' + \
-                   annotation['duplication'][2]
+
+            output_str = ''
+
+            for duplication in annotation['duplication']:
+                prefix = '+' if duplication > 0 else '-'
+                output_str += str(duplication[0]) + '-' + str(duplication[1]) + '|' + prefix + str(duplication[2]) + ' bp|' + duplication[3]
+
+            return output_str
+
         elif mutation_type == 'large_amplification':
             return annotation[mutation_type][0] + '-' + annotation[mutation_type][1] + ' (amplified %iX)' % \
                                                                                        annotation[mutation_type][2]

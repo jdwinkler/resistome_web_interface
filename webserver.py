@@ -149,7 +149,12 @@ class QueryHandler(tornado.web.RequestHandler):
         fhandle.write('\t'.join(serialize_order) + '\n')
 
         for x in mutant_text_data:
-            fhandle.write('\t'.join(x) + '\n')
+
+            unicode_stripped_x = []
+            for substring in x:
+                unicode_stripped_x.append(''.join([s for s in substring if ord(s) < 128]))
+            output_string = '\t'.join(unicode_stripped_x)
+            fhandle.write(output_string + '\n')
 
         fhandle.close()
 
