@@ -5,6 +5,7 @@ import os.path
 from database_query_handler import ResistomeDBHandler
 import uuid
 import datetime
+import unicodedata
 
 MAIN_DIR = ''
 QUERY_DIR = ''
@@ -105,6 +106,7 @@ class FileHandler(tornado.web.RequestHandler):
 
 
 class QueryHandler(tornado.web.RequestHandler):
+
     def mutant_dict_to_web_tuple(self, mutant_dict):
 
         output = []
@@ -128,9 +130,9 @@ class QueryHandler(tornado.web.RequestHandler):
         for x in serialize_order:
 
             if isinstance(mutant_dict[x], list):
-                output.append(','.join(mutant_dict[x]))
+                output.append(unicode(','.join(mutant_dict[x])))
             else:
-                output.append(str(mutant_dict[x]))
+                output.append(unicode(str(mutant_dict[x]), errors='ignore'))
 
         return tuple(output)
 
@@ -148,13 +150,23 @@ class QueryHandler(tornado.web.RequestHandler):
 
         fhandle.write('\t'.join(serialize_order) + '\n')
 
+        errors = []
+
         for x in mutant_text_data:
 
-            unicode_stripped_x = []
-            for substring in x:
-                unicode_stripped_x.append(''.join([s for s in substring if ord(s) < 128]))
-            output_string = '\t'.join(unicode_stripped_x)
+            # unicode_stripped_x = []
+            # for substring in x:
+            #    unicode_stripped_x.append(''.join([s for s in substring if ord(s) < 128]))
+            try:
+                output_string = '\t'.join(x)
+            except:
+                errors.append(x)
+                continue
+
             fhandle.write(output_string + '\n')
+
+        if len(errors) > 0:
+            raise AssertionError(errors)
 
         fhandle.close()
 

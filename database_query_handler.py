@@ -128,30 +128,35 @@ class ResistomeDBHandler:
         query_genes = [x[1] for x in std_gene_names]
         query_phenotypes = [x[1].upper() for x in std_phenotype_names]
 
-        # get mutant id, name pairs for provided gene list
-        self.cursor.execute('select resistome.mutations.mutant_id,'
-                            'resistome.mutations.name '
-                            'from resistome.mutations where resistome.mutations.name = ANY(%s) ', (query_genes,))
-
-        gene_results = self.cursor.fetchall()
         gene_mutant_ids = []
         gene_mutant_dict = defaultdict(set)
-        for result in gene_results:
-            gene_mutant_ids.append(result['mutant_id'])
-            gene_mutant_dict[result['mutant_id']].add(result['name'])
 
-        self.cursor.execute('select resistome.mutants.mutant_id,'
-                            'resistome.phenotypes.phenotype '
-                            'from resistome.mutants '
-                            'inner join resistome.phenotypes on (resistome.mutants.mutant_id = resistome.phenotypes.mutant_id)'
-                            'where UPPER(resistome.phenotypes.phenotype) = ANY(%s) ', (query_phenotypes,))
+        # get mutant id, name pairs for provided gene list
+        if len(query_genes) > 0:
+            self.cursor.execute('select resistome.mutations.mutant_id,'
+                                'resistome.mutations.name '
+                                'from resistome.mutations where resistome.mutations.name = ANY(%s) ', (query_genes,))
 
-        pheno_results = self.cursor.fetchall()
+            gene_results = self.cursor.fetchall()
+            for result in gene_results:
+                gene_mutant_ids.append(result['mutant_id'])
+                gene_mutant_dict[result['mutant_id']].add(result['name'])
+
         pheno_mutant_ids = []
         pheno_mutant_dict = defaultdict(set)
-        for result in pheno_results:
-            pheno_mutant_ids.append(result['mutant_id'])
-            pheno_mutant_dict[result['mutant_id']].add(result['phenotype'])
+
+        if len(query_phenotypes) > 0:
+
+            self.cursor.execute('select resistome.mutants.mutant_id,'
+                                'resistome.phenotypes.phenotype '
+                                'from resistome.mutants '
+                                'inner join resistome.phenotypes on (resistome.mutants.mutant_id = resistome.phenotypes.mutant_id)'
+                                'where UPPER(resistome.phenotypes.phenotype) = ANY(%s) ', (query_phenotypes,))
+
+            pheno_results = self.cursor.fetchall()
+            for result in pheno_results:
+                pheno_mutant_ids.append(result['mutant_id'])
+                pheno_mutant_dict[result['mutant_id']].add(result['phenotype'])
 
         gene_names = [x[0].upper() + ' (%s)' % x[1].upper() for x in std_gene_names]
         pheno_names = [x[0].upper() + ' (%s)' % x[1].upper() for x in std_phenotype_names]
