@@ -61,7 +61,7 @@ Go to:
 					{% for z in entry %}
 						{% set edited_gene = z[0:z.find(' ')] %}
 						{% set annotation = z[z.find(' ')+1:] %}
-						<b>{{edited_gene}}</b>: {{annotation}}<br>
+						<b>{{edited_gene}}</b> {{annotation}}<br>
 					{% end %}
 					</td>
 				{% else %}

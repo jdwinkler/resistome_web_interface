@@ -351,19 +351,18 @@ class ResistomeDBHandler:
             mutated_genes = record['genes']
             mutation_types = record['mutation_type']
             annotations = record['annotation']
-            gene_ids = record['gene_ids']
 
             affected_phenotypes = sorted(list(set(phenotypes_to_highlight) & set(phenotype)))
 
             gene_annotation_output = set()
 
-            for gene, m_type, annotation in zip(mutated_genes, mutation_types, annotations):
+            gene_to_text = defaultdict(set)
 
-                if 'large_' in m_type:
-                    gene_annotation_output.add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
-                else:
-                    gene_annotation_output.add(gene + ' ' + ResistomeDBHandler.standard_mutation_formatting(m_type,
-                                                                                                            annotation))
+            for gene, m_type, annotation in zip(mutated_genes, mutation_types, annotations):
+                gene_to_text[gene].add(m_type+':'+ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+
+            for gene in gene_to_text:
+                gene_annotation_output.add(gene + ': ' + ', '.join(sorted(gene_to_text[gene])))
 
             expression_gene_names = record.get('de_genes', [])
             expression_fold_change = record.get('fold_changes', [])
