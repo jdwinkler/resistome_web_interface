@@ -23,27 +23,27 @@ As of February 2018, the vital statistics of the database are:
 <tr><td><b>Property</b></td><td><b>Value</b></td><td><b>Comment</b></td></tr>
 <tr>
 	<td>Unique Papers</td>
-	<td>359</td>
+	<td>398</td>
 	<td>Number of unique DOIs recorded</td>
 </tr>
 <tr>
 	<td>Mutants per paper</td>
-	<td>19.42 (143.32)</td>
+	<td>179.60 (2502.19)</td>
 	<td>Average mutants (std dev) per paper</td>
 </tr>
 <tr>
 	<td>Mutations per design</td>
-	<td>65.77 (376.72)</td>
+	<td>74.89 (399.94)</td>
 	<td>Average mutations (std dev) per mutant</td>
 </tr>
 <tr>
 	<td>Number of mutants</td>
-	<td>6971</td>
+	<td>12821</td>
 	<td></td>
 </tr>
 <tr>
 	<td>Unique Phenotypes</td>
-	<td>289</td>
+	<td>458</td>
 	<td>Includes both resistance and sensitivity</td>
 </tr>
 <tr>
@@ -53,12 +53,12 @@ As of February 2018, the vital statistics of the database are:
 </tr>
 <tr>
 	<td>Genes mutated</td>
-	<td>6654</td>
+	<td>7200</td>
 	<td>Count of unique genes reported as mutated</td>
 </tr>
 <tr>
 	<td>Multiple mutations</td>
-	<td>971</td>
+	<td>1087</td>
 	<td>Mutants with multiple mutations</td>
 </tr>
 </table>
@@ -73,6 +73,7 @@ The Resistome incorporates a wide range of complementary data sources and tools:
 <ul>
 	<li><a href="https://biocyc.org/">Biocyc</a> integration</li>
 	<li>COBRA modeling via <a href="https://cobrapy.readthedocs.io/en/stable/">Cobrapy</a></li>
+	<li>Phenotype prediction via <a href="https://www.tensorflow.org/">Tensorflow</a></li>
 	<li><a href="https://rostlab.org/owiki/index.php/Snap2">SNAP2</a> mutation effect prediction</li>
 	<li><a href="https://inpsmd.biocomp.unibo.it/welcome/default/index">INPS</a> mutation effect prediction</li>
 	<li><a href="http://circos.ca/">Circos</a> visualization</li>
@@ -80,7 +81,7 @@ The Resistome incorporates a wide range of complementary data sources and tools:
 	<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5293155/">Gene deletion-metabolite</a> relationships</li>
 </ul>
 
-While this website provides limited search capabilities, the distribution below contains more extensive functionality to make use of these additional features.
+While this website provides limited search capabilities, the distribution below contains more extensive functionality to make use of these additional features. Note that phenotype prediction is of limited accuracy due to the small size of the Resistome dataset (compared to typical machine learning problems).
 
 </p>
 <p>
@@ -89,7 +90,7 @@ The complete Resistome software distribution, along with instructions on how to 
 
 If there is a particular dataset that would be useful for your research not provided here, please do not hesitate to contact us for customized data extraction.
 <!--<p><b>Query the Resistome:</b></p>-->
-<p><b>Acknowledgements</b></p>
+<p><b>Acknowledgments</b></p>
 Resistome V1 funding provided by the Fulbright Foundation-Taiwan and the Department of Energy. Resistome V2 (the Tolerome) funding provided by the National Science Foundation, the Department of Energy Genome Sciences Project (#DE-SC008812 to R.T.G.), and the William Keck Foundation (#OCG6145B to A.C.). <br><br>
 Questions, comments or suggestions about this website or the Resistome? Please contact <a href="mailto:james.winkler@gmail.com">James Winkler</a> for assistance.</p>
 

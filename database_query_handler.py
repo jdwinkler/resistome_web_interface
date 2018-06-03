@@ -359,7 +359,7 @@ class ResistomeDBHandler:
             gene_to_text = defaultdict(set)
 
             for gene, m_type, annotation in zip(mutated_genes, mutation_types, annotations):
-                gene_to_text[gene].add(m_type+':'+ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+                gene_to_text[gene].add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
 
             for gene in gene_to_text:
                 gene_annotation_output.add(gene + ': ' + ', '.join(sorted(gene_to_text[gene])))
@@ -446,7 +446,7 @@ class ResistomeDBHandler:
                 if only_affected_genes and gene not in genes_to_highlight:
                     continue
 
-                gene_to_text[gene].add(m_type + ':' + ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
+                gene_to_text[gene].add(ResistomeDBHandler.standard_mutation_formatting(m_type, annotation))
 
             for gene in gene_to_text:
                 gene_annotation_output.add(gene + ': ' + ', '.join(sorted(gene_to_text[gene])))
@@ -501,34 +501,34 @@ class ResistomeDBHandler:
             str_output = []
             for aa_array in annotation['aa_snps']:
                 str_output.append(aa_array[1] + str(aa_array[0]) + aa_array[2])
-            return ', '.join(str_output)
+            return 'AA change(s):' + ', '.join(str_output)
         elif mutation_type == 'nuc_snps':
             str_output = []
             for nuc_array in annotation['nuc_snps']:
                 str_output.append(nuc_array[1] + str(nuc_array[0]) + nuc_array[2])
-            return 'SNP(s) ' + ', '.join(str_output)
+            return 'SNP(s):' + ', '.join(str_output)
         elif mutation_type == 'indel':
             str_output = []
             for indel_array in annotation['indel']:
                 prefix = '+' if indel_array[1] > 0 else '-'
                 try:
                     str_output.append(
-                        'indel ' + str(indel_array[0]) + '|' + prefix + str(abs(indel_array[1])) + ' bp|' +
+                        'indel:' + str(indel_array[0]) + '|' + prefix + str(abs(indel_array[1])) + ' bp|' +
                         indel_array[2])
                 except:
-                    str_output.append('indel, but location/size unclear')
+                    str_output.append('indel:location or size unclear')
             return ','.join(str_output)
         elif mutation_type == 'is_insertion':
-            return 'IS insertion ' + annotation['is_insertion'][0]
+            return 'IS insertion:' + annotation['is_insertion'][0]
         elif mutation_type == 'del':
-            return '(deleted)'
+            return 'deleted'
         elif mutation_type == 'intergenic':
-            return 'intergenic ' + annotation['intergenic'][0] + '/' + annotation['intergenic'][1]
+            return 'intergenic:' + annotation['intergenic'][0] + '/' + annotation['intergenic'][1]
         elif mutation_type == 'amplified':
-            return '(amplified %iX)' % annotation['amplified']
+            return 'amplified:%iX' % annotation['amplified']
         elif mutation_type == 'duplication':
 
-            output_str = ''
+            output_str = 'duplication:'
 
             for duplication in annotation['duplication']:
                 prefix = '+' if duplication > 0 else '-'
@@ -537,18 +537,18 @@ class ResistomeDBHandler:
             return output_str
 
         elif mutation_type == 'large_amplification':
-            return annotation[mutation_type][0] + '-' + annotation[mutation_type][1] + ' (amplified %iX)' % \
+            return 'large amp:'+ annotation[mutation_type][0] + '-' + annotation[mutation_type][1] + ' (amplified %iX)' % \
                                                                                        annotation[mutation_type][2]
         elif mutation_type == 'large_deletion':
-            return annotation[mutation_type][0] + '-' + annotation[mutation_type][1] + ' (deleted)'
+            return 'large del:'+annotation[mutation_type][0] + '-' + annotation[mutation_type][1] + ' (deleted)'
         elif mutation_type == 'large_inversion':
-            return annotation[mutation_type][0] + ' <=> ' + annotation[mutation_type][1] + ' (inverted)'
+            return 'large invert:'+annotation[mutation_type][0] + ' <=> ' + annotation[mutation_type][1] + ' (inverted)'
         elif mutation_type == 'mutated':
-            return '(mutated)'
+            return 'mutated'
         elif mutation_type == 'oe':
             return 'overexpressed'
         elif mutation_type == 'plasmid':
-            return 'plasmid expression'
+            return 'plasmid exp.'
         elif mutation_type == 'truncated':
             return 'truncated'
         elif mutation_type == 'rep':
@@ -558,6 +558,6 @@ class ResistomeDBHandler:
         elif mutation_type == 'frameshift':
             return 'frameshift'
         elif mutation_type == 'rbs_tuned':
-            return '(engineered RBS)'
+            return 'engineered RBS'
         else:
             return '(%s)' % mutation_type
