@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d521350-3fce-4319-8845-b92b587f2c66" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/Resistome_Mutation_Report.xlsx" afterPath="$PROJECT_DIR$/static/Resistome_Mutation_Report.xlsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/Thumbs.db" afterPath="$PROJECT_DIR$/static/Thumbs.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database_query_handler.py" afterPath="$PROJECT_DIR$/database_query_handler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/main.html" afterPath="$PROJECT_DIR$/main/main.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/Resistome_Gene_Count_Report.txt" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
