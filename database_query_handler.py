@@ -245,7 +245,7 @@ class ResistomeDBHandler:
         gene_names = [x.upper() for x in gene_names]
 
         self.cursor.execute('select name, mg1655_accession, species_accession '
-                            'from resistome.gene_standardization where name = ANY(%s) '
+                            'from resistome.gene_metadata where name = ANY(%s) '
                             'OR mg1655_accession = ANY(%s) '
                             'OR species_accession = ANY(%s)', (gene_names, gene_names, gene_names))
 
