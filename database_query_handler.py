@@ -181,8 +181,6 @@ class ResistomeDBHandler:
             self.cursor.execute('select array_agg(distinct resistome.papers.title) as title, '
                                 'array_agg(distinct resistome.papers.doi) as doi,'
                                 'array_agg(resistome.phenotypes.phenotype) as phenotype,'
-                                'array_agg(distinct resistome.phenotypes.phenotype_class) as phenotype_class, '
-                                'array_agg(distinct resistome.phenotypes.ontology_root) as ontology_root, '
                                 'array_agg(resistome.phenotypes.phenotype_type) as phenotype_type, '
                                 'array_agg(resistome.mutations.name) as genes,'
                                 'array_agg(resistome.annotations.mutation_type) as mutation_type,'
@@ -207,8 +205,6 @@ class ResistomeDBHandler:
             self.cursor.execute('select array_agg(distinct resistome.papers.title) as title, '
                                 'array_agg(distinct resistome.papers.doi) as doi,'
                                 'array_agg(resistome.phenotypes.phenotype) as phenotype,'
-                                'array_agg(distinct resistome.phenotypes.phenotype_class) as phenotype_class, '
-                                'array_agg(distinct resistome.phenotypes.ontology_root) as ontology_root, '
                                 'array_agg(resistome.phenotypes.phenotype_type) as phenotype_type, '
                                 'array_agg(resistome.mutations.name) as genes,'
                                 'array_agg(resistome.annotations.mutation_type) as mutation_type,'
@@ -426,7 +422,7 @@ class ResistomeDBHandler:
             phenotype = [x[0] for x in filter_phenotypes]
             phenotype_type = [x[1] for x in filter_phenotypes]
 
-            root = record['phenotype_class']
+            root = record['phenotype']
 
             genes_to_highlight = mutant_to_queried_genes[record['mutant_id']]
 
