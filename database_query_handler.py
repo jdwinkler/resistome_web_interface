@@ -343,7 +343,7 @@ class ResistomeDBHandler:
             phenotype = [x[0] for x in filter_phenotypes]
             phenotype_type = [x[1] for x in filter_phenotypes]
 
-            root = record['phenotype_class']
+            # root = record['phenotype_class']
             mutated_genes = record['genes']
             mutation_types = record['mutation_type']
             annotations = record['annotation']
@@ -383,7 +383,7 @@ class ResistomeDBHandler:
                            'strain': strain,
                            'phenotypes': phenotype,
                            'phenotype_types': phenotype_type,
-                           'root': root,
+                           # 'root': root,
                            'annotations': gene_annotation_output,
                            'expressions': expression_annotation_output,
                            'affected_genes' : ['N/A'],

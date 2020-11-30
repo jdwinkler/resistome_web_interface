@@ -32,7 +32,7 @@ serialize_order = ['title',
                    'strain',
                    'phenotypes',
                    'phenotype_types',
-                   'root',
+                   # 'root',
                    'annotations',
                    'expressions']
 

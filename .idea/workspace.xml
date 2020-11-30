@@ -20,12 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d521350-3fce-4319-8845-b92b587f2c66" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/resistome_web_interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/resistome_web_interface.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database_query_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/database_query_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/Resistome_Gene_Count_Report_old.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/webserver.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,11 +118,24 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="301" y="60" key="SettingsEditor" timestamp="1593466220754">
+    <state width="1578" height="158" key="GridCell.Tab.0.bottom" timestamp="1606779817844">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="301" y="60" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1593466220754" />
+    <state width="1578" height="158" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1606779817844" />
+    <state width="1578" height="158" key="GridCell.Tab.0.center" timestamp="1606779817843">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1578" height="158" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1606779817843" />
+    <state width="1578" height="158" key="GridCell.Tab.0.left" timestamp="1606779817843">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1578" height="158" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1606779817843" />
+    <state width="1578" height="158" key="GridCell.Tab.0.right" timestamp="1606779817844">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1578" height="158" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1606779817844" />
   </component>
 </project>
