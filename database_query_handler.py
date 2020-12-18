@@ -85,7 +85,7 @@ class ResistomeDBHandler:
         for (m_id, score) in pw_distances:
 
             # pull mutant ids if minimum count hasn't been met yet
-            if m_id <= self.vector_db[feature_types][1] or len(mutant_ids) < min_mutants:
+            if len(mutant_ids) < min_mutants:
                 mutant_ids.append(m_id)
                 scores_dict[m_id] = '%0.3f' % ((1.0 - score)*3)
 
