@@ -99,7 +99,7 @@ class FileHandler(tornado.web.RequestHandler):
 
         self.set_header('Content-Type', 'application/text')
         self.set_header('Content-Disposition', 'attachment; filename=resistome_data.txt')
-        with open(file_name, 'rU') as f:
+        with open(file_name, 'r') as f:
             for line in f:
                 self.write(line)
         self.finish()

@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d521350-3fce-4319-8845-b92b587f2c66" name="Default" comment="Bugfixes for phenotype searches; &quot;root&quot; field was deprecated but not removed from the serializer/query helper.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/webserver.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,22 +131,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="Bugfixes for phenotype searches; &quot;root&quot; field was deprecated but not removed from the serializer/query helper." />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1578" height="164" key="GridCell.Tab.0.bottom" timestamp="1608324434913">
+    <state width="1578" height="266" key="GridCell.Tab.0.bottom" timestamp="1608325163236">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="164" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1608324434913" />
-    <state width="1578" height="164" key="GridCell.Tab.0.center" timestamp="1608324434912">
+    <state width="1578" height="266" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1608325163236" />
+    <state width="1578" height="266" key="GridCell.Tab.0.center" timestamp="1608325163236">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="164" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1608324434912" />
-    <state width="1578" height="164" key="GridCell.Tab.0.left" timestamp="1608324434912">
+    <state width="1578" height="266" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1608325163236" />
+    <state width="1578" height="266" key="GridCell.Tab.0.left" timestamp="1608325163236">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="164" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1608324434912" />
-    <state width="1578" height="164" key="GridCell.Tab.0.right" timestamp="1608324434913">
+    <state width="1578" height="266" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1608325163236" />
+    <state width="1578" height="266" key="GridCell.Tab.0.right" timestamp="1608325163236">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="164" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1608324434913" />
+    <state width="1578" height="266" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1608325163236" />
     <state x="301" y="60" key="SettingsEditor" timestamp="1608314456464">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -156,5 +155,9 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="161" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1606780136386" />
+    <state x="506" y="134" width="587" height="592" key="find.popup" timestamp="1608325139797">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="506" y="134" width="587" height="592" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1608325139797" />
   </component>
 </project>
