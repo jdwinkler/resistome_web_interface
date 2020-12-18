@@ -99,7 +99,7 @@ class FileHandler(tornado.web.RequestHandler):
 
         self.set_header('Content-Type', 'application/text')
         self.set_header('Content-Disposition', 'attachment; filename=resistome_data.txt')
-        with open(file_name, 'rU') as f:
+        with open(file_name, 'r') as f:
             for line in f:
                 self.write(line)
         self.finish()
@@ -130,9 +130,9 @@ class QueryHandler(tornado.web.RequestHandler):
         for x in serialize_order:
 
             if isinstance(mutant_dict[x], list):
-                output.append(unicode(','.join(mutant_dict[x])))
+                output.append(','.join(mutant_dict[x]))
             else:
-                output.append(unicode(str(mutant_dict[x]), errors='ignore'))
+                output.append(str(mutant_dict[x]))
 
         return tuple(output)
 

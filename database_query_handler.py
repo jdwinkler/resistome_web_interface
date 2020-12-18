@@ -1,8 +1,8 @@
 import psycopg2
 import psycopg2.extras
 import os
-import urlparse
-import cPickle
+import urllib.parse as urlparse
+import pickle as cPickle
 import recommendation_system as rs
 from collections import defaultdict
 
@@ -40,7 +40,7 @@ class ResistomeDBHandler:
         self.cursor = cursor
 
         # load data used for recommendation system
-        self.vector_db = cPickle.load(open(path_to_serialized_vectors, 'rU'))
+        self.vector_db = cPickle.load(open(path_to_serialized_vectors, 'rb'))
 
     def __del__(self):
 
@@ -85,7 +85,7 @@ class ResistomeDBHandler:
         for (m_id, score) in pw_distances:
 
             # pull mutant ids if minimum count hasn't been met yet
-            if m_id <= self.vector_db[feature_types][1] or len(mutant_ids) < min_mutants:
+            if len(mutant_ids) < min_mutants:
                 mutant_ids.append(m_id)
                 scores_dict[m_id] = '%0.3f' % ((1.0 - score)*3)
 

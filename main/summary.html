@@ -11,59 +11,64 @@ The Resistome Search Tool
 
 <div style="margin: 0 auto; width: 1200px; text-align:justify">
 <p style="text-align: center">
-<img src = "/static/ecoli_genetic_interactions_web_low_res.png" alt = "The E. coli mutome" width="590px" height="617px">
-<figcaption style="text-align:center"><b><i>Visualization of the current <i>E. coli</i> mutome recorded in the Resistome. Spikes are proportional to mutation frequency.</i></b></figcaption>
+<img src = "/static/ecoli_genetic_interactions_web_low_res_dec2020.png" alt = "The E. coli mutome" width="800px" height="823px">
+<figcaption style="text-align:center"><b><i>Visualization of the current <i>E. coli</i> mutome recorded in the Resistome.
+	Spikes are proportional to mutation frequency.</i></b></figcaption>
 </p>
 <p>
 <b>Current Status of the Resistome</b>
 <br><br>
-As of June 2018, the vital statistics of the database are:
+As of December 2020, the vital statistics of the database are:
 <br><br>
-<table align="center">
+<table align="center" style="border: 1px solid black">
 <tr><td><b>Property</b></td><td><b>Value</b></td><td><b>Comment</b></td></tr>
 <tr>
 	<td>Unique Papers</td>
-	<td>400</td>
+	<td>446</td>
 	<td>Number of unique DOIs recorded</td>
 </tr>
 <tr>
 	<td>Mutants per paper</td>
-	<td>179.72 (2495.56)</td>
+	<td>165.91 (2364.54)</td>
 	<td>Average mutants (std dev) per paper</td>
 </tr>
 <tr>
 	<td>Mutations per design</td>
-	<td>72.65 (399.84)</td>
+	<td>102.31 (579.36)</td>
 	<td>Average mutations (std dev) per mutant</td>
 </tr>
 <tr>
 	<td>Number of mutants</td>
-	<td>12829</td>
-	<td></td>
+	<td>14269</td>
+	<td>Isolates reported</td>
 </tr>
 <tr>
 	<td>Unique Phenotypes</td>
-	<td>460</td>
+	<td>555</td>
 	<td>Includes both resistance and sensitivity</td>
 </tr>
 <tr>
 	<td>Phenotype Categories</td>
-	<td>21</td>
-	<td></td>
+	<td>22</td>
+	<td>High-level tags</td>
 </tr>
 <tr>
 	<td>Genes mutated</td>
-	<td>7137</td>
+	<td>7322</td>
 	<td>Count of unique genes reported as mutated</td>
 </tr>
 <tr>
 	<td>Multiple mutations</td>
-	<td>1082</td>
+	<td>1933</td>
 	<td>Mutants with multiple mutations</td>
 </tr>
 </table>
 <br>
-The visualization above is a circular representation of the <i>E. coli</i> pangenome (containing B, W, K). Linkages in the center represent gene co-occurence (green) or differential expression co-occurence in the same genotype, whereas each successive shell represents coverage of SNPs or AA replacements, amplifications, deletions, inversions, and indels described within Resistome records.
+	<p>
+The visualization above is a circular representation of the <i>E. coli</i> pangenome (containing B, W, K). Each
+successive shell around the chromosome represents coverage of SNPs or AA replacements, amplifications, deletions, inversions,
+and indels described within Resistome records. Linkages (gene-gene interactions based upon co-occurrences) are omitted
+here for clarity.
 </p>
 <p>
 <b>Data Integration and Analysis Methods</b><br><br>
@@ -72,27 +77,53 @@ The Resistome incorporates a wide range of complementary data sources and tools:
 
 <ul>
 	<li><a href="https://biocyc.org/">Biocyc</a> integration</li>
-	<li>COBRA modeling via <a href="https://cobrapy.readthedocs.io/en/stable/">Cobrapy</a></li>
+	<li>COBRA modeling via <a href="https://cobrapy.readthedocs.io/en/stable/">CobraPy</a></li>
 	<li>Phenotype prediction via <a href="https://www.tensorflow.org/">Tensorflow</a></li>
 	<li><a href="https://rostlab.org/owiki/index.php/Snap2">SNAP2</a> mutation effect prediction</li>
 	<li><a href="https://inpsmd.biocomp.unibo.it/welcome/default/index">INPS</a> mutation effect prediction</li>
 	<li><a href="http://circos.ca/">Circos</a> visualization</li>
 	<li>Interaction data from <a href="https://academic.oup.com/database/article/doi/10.1093/database/bav001/2433133">EcoliNet V1</a> and <a href="http://regulondb.ccg.unam.mx/">RegulonDB</a></li>
 	<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5293155/">Gene deletion-metabolite</a> relationships</li>
+	<li>The <a href="https://aledb.org/">Adaptive Laboratory Evolution</a> database</li>
 </ul>
 
-While this website provides limited search capabilities, the distribution below contains more extensive functionality to make use of these additional features. Note that phenotype prediction is of limited accuracy due to the small size of the Resistome dataset (compared to typical machine learning problems).
+While this website provides limited search capabilities, the distribution below contains more extensive functionality to
+	make use of these additional features. Phenotype prediction approaches may be able to make use of the SQL database
+	dump linked below, although please see the note below concerning the Resistome data cleaning process.
 
 </p>
+
+<p>
+	<b>Usage Notes</b><br><br>
+	The Resistome is comprised of data that is curated directly from scientific publications, usually from the
+	supplementary tables defining mutant genotypes and their associated phenotypes. You should expect that there will
+	be errors in this dataset stemming from ambiguities in the original publications or the curation process. We did not
+	attempt to correct/normalize the provided relative mutation genome positions into their absolute positions for
+	strains other than <i>E. coli</i> MG!655, REL606, and W. You can likely obtain gene position calls from NCBI for
+	the relevant strains to do this correction, and we may do so in the future. Alternatively, we
+	may repeat the resequencing and variant calling process to normalize the variant calls per strain.
+</p>
+
 <p>
 <b>Data Downloads</b><br><br>
-The complete Resistome software distribution, along with instructions on how to build your own copy of the database, can be obtained <a href="https://bitbucket.org/jdwinkler/resistome_release">here</a>. Two summary datasets are available: a compilation of each individual mutation in the database with associated phenotypes and annotated mutation data <a href="/static/Resistome_Mutation_Report.xlsx">downloadable here</a> and a count of how many times a given gene is mutated and total set of phenotypes those gene mutations are associated with <a href="/static/Resistome_Gene_Count_Report.xlsx">here<a/>.
+The complete Resistome software distribution, along with instructions on how to build your own copy of the database,
+	can be obtained <a href="https://bitbucket.org/jdwinkler/resistome_release">here</a>. A PostgresSQL dump is also
+	available <a href="/static/resistome-202012181341.sql">here.</a>
+	Two summary datasets are available: a compilation of each individual mutation in the database with associated
+	phenotypes and annotated mutation data <a href="/static/Resistome_Mutation_Report-DEC2020.xlsx">downloadable here</a> and
+	a count of how many times a given gene is mutated and total set of phenotypes those gene mutations are associated
+	with <a href="/static/Resistome_Gene_Count_Report-DEC2020.xlsx">here<a/>.
 
-If there is a particular dataset or data format that would be useful for your research not provided here, please do not hesitate to contact us for customized data extraction.
+If there is a particular dataset or data format that would be useful for your research not provided here,
+	please do not hesitate to contact us for customized data extraction.
 <!--<p><b>Query the Resistome:</b></p>-->
 <p><b>Acknowledgments</b></p>
-Resistome V1 funding provided by the Fulbright Foundation-Taiwan and the Department of Energy. Resistome V2 (the Tolerome) funding provided by the National Science Foundation, the Department of Energy Genome Sciences Project (#DE-SC008812 to R.T.G.), and the William Keck Foundation (#OCG6145B to A.C.). <br><br>
-Questions, comments or suggestions about this website or the Resistome? Please contact <a href="mailto:james.winkler@gmail.com">James Winkler</a> for assistance.</p>
+Resistome V1 funding provided by the Fulbright Foundation-Taiwan and the Department of Energy. Resistome V2
+	(the Tolerome) funding provided by the National Science Foundation, the Department of Energy Genome Sciences
+	Project (#DE-SC008812 to R.T.G.), and the William Keck Foundation (#OCG6145B to A.C.).
+	Special thanks go to Dr. Laura Jarboe and her laboratory for their interest. <br><br>
+Questions, comments or suggestions about this website or the Resistome? Please contact
+	<a href="mailto:james.winkler@gmail.com">James Winkler</a> for assistance.</p>
 
 </div>
 
