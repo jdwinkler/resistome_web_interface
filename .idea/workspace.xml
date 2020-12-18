@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d521350-3fce-4319-8845-b92b587f2c66" name="Default" comment="Bugfixes for phenotype searches; &quot;root&quot; field was deprecated but not removed from the serializer/query helper.">
-      <change beforePath="$PROJECT_DIR$/webserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/webserver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
