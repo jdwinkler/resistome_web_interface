@@ -1,8 +1,8 @@
 import psycopg2
 import psycopg2.extras
 import os
-import urlparse
-import cPickle
+import urllib.parse as urlparse
+import pickle as cPickle
 import recommendation_system as rs
 from collections import defaultdict
 
@@ -40,7 +40,7 @@ class ResistomeDBHandler:
         self.cursor = cursor
 
         # load data used for recommendation system
-        self.vector_db = cPickle.load(open(path_to_serialized_vectors, 'rU'))
+        self.vector_db = cPickle.load(open(path_to_serialized_vectors, 'rb'))
 
     def __del__(self):
 

@@ -130,9 +130,9 @@ class QueryHandler(tornado.web.RequestHandler):
         for x in serialize_order:
 
             if isinstance(mutant_dict[x], list):
-                output.append(unicode(','.join(mutant_dict[x])))
+                output.append(','.join(mutant_dict[x]))
             else:
-                output.append(unicode(str(mutant_dict[x]), errors='ignore'))
+                output.append(str(mutant_dict[x]))
 
         return tuple(output)
 
