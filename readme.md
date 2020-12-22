@@ -9,3 +9,5 @@ file hosting website. Must be accessible to unauthenticated HTTPS requests.
 
 For the restore process, check the Postgres web add-on for the DATABASE_URL to use (should be 
 postgres-random name-random number).
+
+Note: code lives [here](https://bitbucket.org/jdwinkler/genome-engineering/src/master/).
