@@ -3,7 +3,7 @@ import psycopg2.extras
 import os
 import urllib.parse as urlparse
 import pickle as cPickle
-import recommendation_system as rs
+from resistome.machine_learning import recommendation_system as rs
 from collections import defaultdict
 
 
@@ -279,11 +279,10 @@ class ResistomeDBHandler:
 
         phenotype_names = [x.upper() for x in phenotype_names]
 
-        self.cursor.execute('select name, standard_name from resistome.phenotype_standardization '
-                            'where resistome.phenotype_standardization.name = ANY(%s) OR '
+        self.cursor.execute('select standard_name from resistome.phenotype_standardization '
+                            'where '
                             'resistome.phenotype_standardization.standard_name = ANY(%s) OR '
                             'resistome.phenotype_standardization.phenotype_type = ANY(%s)', (phenotype_names,
-                                                                                             phenotype_names,
                                                                                              [x.lower() for x in phenotype_names]))
 
         requested_phenotypes = set(phenotype_names)
@@ -294,11 +293,11 @@ class ResistomeDBHandler:
         display_name = dict()
 
         for record in self.cursor:
-            output.append((record['name'], record['standard_name']))
-            found_phenotypes.add(record['name'])
+            output.append((record['standard_name'], record['standard_name']))
+            # found_phenotypes.add(record['name'])
             found_phenotypes.add(record['standard_name'])
 
-            display_name[record['name']] = record['name']
+            # display_name[record['name']] = record['name']
             display_name[record['standard_name']] = record['standard_name']
 
         remaining_phenotypes = requested_phenotypes - found_phenotypes
@@ -487,6 +486,8 @@ class ResistomeDBHandler:
         
         Generates a 'visually pleasing' version of internal Resistome mutation data depending on the mutation type
         and annotation data available.
+
+        Note: I add a +1 offset here to fix the fact that the Resistome is zero-indexed and not 1-indexed.
         
         :param mutation_type: 
         :param annotation: 
@@ -496,12 +497,12 @@ class ResistomeDBHandler:
         if mutation_type == 'aa_snps':
             str_output = []
             for aa_array in annotation['aa_snps']:
-                str_output.append(aa_array[1] + str(aa_array[0]) + aa_array[2])
+                str_output.append(aa_array[1] + str(aa_array[0] + 1) + aa_array[2])
             return 'AA change(s):' + ', '.join(str_output)
         elif mutation_type == 'nuc_snps':
             str_output = []
             for nuc_array in annotation['nuc_snps']:
-                str_output.append(nuc_array[1] + str(nuc_array[0]) + nuc_array[2])
+                str_output.append(nuc_array[1] + str(nuc_array[0] + 1) + nuc_array[2])
             return 'SNP(s):' + ', '.join(str_output)
         elif mutation_type == 'indel':
             str_output = []
@@ -509,7 +510,7 @@ class ResistomeDBHandler:
                 prefix = '+' if indel_array[1] > 0 else '-'
                 try:
                     str_output.append(
-                        'indel:' + str(indel_array[0]) + '|' + prefix + str(abs(indel_array[1])) + ' bp|' +
+                        'indel:' + str(indel_array[0] + 1) + '|' + prefix + str(abs(indel_array[1])) + ' bp|' +
                         indel_array[2])
                 except:
                     str_output.append('indel:location or size unclear')
@@ -527,8 +528,8 @@ class ResistomeDBHandler:
             output_str = 'duplication:'
 
             for duplication in annotation['duplication']:
-                prefix = '+' if duplication > 0 else '-'
-                output_str += str(duplication[0]) + '-' + str(duplication[1]) + '|' + prefix + str(duplication[2]) + ' bp|' + duplication[3]
+                prefix = '+'
+                output_str += str(duplication[0] + 1) + '-' + str(duplication[1] + 1) + '|' + prefix + str(duplication[2]) + ' bp|' + duplication[3]
 
             return output_str
 
