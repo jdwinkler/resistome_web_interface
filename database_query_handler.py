@@ -502,7 +502,12 @@ class ResistomeDBHandler:
         elif mutation_type == 'nuc_snps':
             str_output = []
             for nuc_array in annotation['nuc_snps']:
-                str_output.append(nuc_array[1] + str(nuc_array[0] + 1) + nuc_array[2])
+                location = nuc_array[0]
+                if location is None:
+                    location = '?'
+                else:
+                    location = location + 1
+                str_output.append(nuc_array[1] + str(location) + nuc_array[2])
             return 'SNP(s):' + ', '.join(str_output)
         elif mutation_type == 'indel':
             str_output = []
